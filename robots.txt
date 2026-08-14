@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_og.html
+
+Sitemap: https://jeramai.github.io/cadence-site/sitemap.xml
