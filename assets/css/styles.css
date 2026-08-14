@@ -675,6 +675,7 @@ a {
 .menu a:nth-child(4) { transition-delay: 250ms; }
 .menu a:nth-child(5) { transition-delay: 300ms; }
 .menu a:nth-child(6) { transition-delay: 350ms; }
+.menu a:nth-child(7) { transition-delay: 400ms; }
 
 /* ── Buttons ───────────────────────────────────────────────────────────────── */
 
@@ -1345,6 +1346,58 @@ a {
   border-radius: 9999px;
   background: var(--brand);
   flex-shrink: 0;
+}
+
+/* ── Screenshot strip ──────────────────────────────────────────────────────── */
+
+.shots {
+  display: grid;
+  gap: var(--s-300);
+  margin-top: var(--s-600);
+}
+
+@media (min-width: 720px) {
+  .shots {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.shot {
+  margin: 0;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: var(--s-100);
+  box-shadow: var(--shadow-card);
+  transition: transform 700ms var(--ease), box-shadow 700ms var(--ease);
+}
+
+.shot:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.shot img {
+  /* Nested radius: 24px outer, 12px gap. 24 - 12 = 12. */
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--chip);
+}
+
+.shot figcaption {
+  padding: var(--s-200) var(--s-100) var(--s-50);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--text-dim);
+}
+
+.shot figcaption strong {
+  display: block;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: var(--s-25);
 }
 
 /* ── Pricing ───────────────────────────────────────────────────────────────── */
