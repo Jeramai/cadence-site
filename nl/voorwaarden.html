@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      /* Zet een opgeslagen themakeuze vóór de eerste render, zodat er niets flikkert. */
+      try {
+        var t = localStorage.getItem('cadence-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voorwaarden — Cadence</title>
+    <meta
+      name="description"
+      content="Voorwaarden voor het gebruik van de website van Cadence en van de Cadence-app voor vitaliteit op het werk."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="alternate" hreflang="nl" href="https://jeramai.github.io/cadence-site/nl/voorwaarden.html" />
+    <link rel="alternate" hreflang="en" href="https://jeramai.github.io/cadence-site/terms.html" />
+    <meta name="theme-color" content="#f2f6f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1b19" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Naar de inhoud</a>
+
+    <nav class="nav" aria-label="Hoofdmenu">
+      <div class="nav__pill">
+        <a class="nav__brand" href="index.html" aria-label="Cadence home">
+          <img class="brandmark--light" src="../assets/img/logo-ink.svg" alt="" width="24" height="24" />
+          <img class="brandmark--dark" src="../assets/img/logo.svg" alt="" width="24" height="24" />
+          <span>Cadence</span>
+        </a>
+        <a class="btn btn--primary btn--sm" href="index.html#demo">Plan een demo</a>
+      </div>
+    </nav>
+
+    <div class="utils">
+      <div class="lang" role="group" aria-label="Taal">
+        <a href="../terms.html" hreflang="en" lang="en">EN</a>
+        <a href="voorwaarden.html" hreflang="nl" lang="nl" aria-current="true">NL</a>
+      </div>
+
+      <button class="theme-fab" id="theme-toggle" type="button" aria-label="Wissel naar donker thema">
+        <svg class="icon-sun" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" aria-hidden="true">
+          <circle cx="128" cy="128" r="52" />
+          <line x1="128" y1="28" x2="128" y2="8" />
+          <line x1="128" y1="248" x2="128" y2="228" />
+          <line x1="28" y1="128" x2="8" y2="128" />
+          <line x1="248" y1="128" x2="228" y2="128" />
+          <line x1="57" y1="57" x2="43" y2="43" />
+          <line x1="213" y1="213" x2="199" y2="199" />
+          <line x1="57" y1="199" x2="43" y2="213" />
+          <line x1="213" y1="43" x2="199" y2="57" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" aria-hidden="true">
+          <path d="M216 152A96 96 0 0 1 104 40a96 96 0 1 0 112 112Z" />
+        </svg>
+      </button>
+    </div>
+
+    <main id="main">
+      <div class="wrap prose">
+        <h1>Voorwaarden</h1>
+        <p class="prose__meta">
+          Concept van 14 augustus 2026. Dit document is nog niet juridisch getoetst. De bindende
+          voorwaarden voor een uitrol zijn die uit de getekende overeenkomst met je werkgever.
+        </p>
+
+        <h2>Deze website</h2>
+        <p>
+          Deze site beschrijft het product Cadence. Beschrijvingen van functies, pakketten en
+          plannen kunnen wijzigen. Niets op deze site is een aanbod, een offerte of een toezegging
+          om een bepaalde functie op een bepaalde datum te leveren.
+        </p>
+
+        <h2>De app</h2>
+        <p>
+          Cadence wordt verkocht aan werkgevers, die de app beschikbaar stellen aan hun mensen.
+          Je recht om de app te gebruiken komt voort uit de overeenkomst van je werkgever met
+          ons. Eindigt die overeenkomst, dan eindigt de toegang daarmee.
+        </p>
+
+        <h2>Geen medisch advies</h2>
+        <p>
+          Cadence stelt beweging voor en telt die. Het is geen medisch hulpmiddel en geeft geen
+          medisch advies. Het tellen van herhalingen en de terugkoppeling op je houding zijn
+          informatief. Overleg met een deskundige voordat je met een nieuw bewegingsprogramma
+          begint, en stop als iets pijn doet.
+        </p>
+
+        <h2>Deelname is vrijwillig</h2>
+        <p>
+          Camerasessies zijn een eigen keuze. De dagring is te sluiten zonder de camera ooit te
+          gebruiken. Hoe een werkgever deelname wil stimuleren is een zaak tussen die werkgever
+          en zijn mensen.
+        </p>
+
+        <h2>Toegestaan gebruik</h2>
+        <p>
+          Probeer geen punten te vervalsen, geen gegevens van een ander te benaderen en een
+          bedrijfsbuild niet te verspreiden buiten de organisatie waarvoor die is uitgegeven.
+          Builds worden via een directe link verspreid en zijn bedoeld voor de mensen van de
+          organisatie met de licentie.
+        </p>
+
+        <h2>Beschikbaarheid</h2>
+        <p>
+          Wij streven naar continue beschikbaarheid, maar garanderen die niet op deze website.
+          Serviceniveaus voor een uitrol, voor zover die er zijn, staan in de getekende
+          overeenkomst.
+        </p>
+
+        <h2>Contact</h2>
+        <p>Mail naar legal@cadence.example met elke vraag over deze voorwaarden.</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer__base">
+          <span>Copyright 2026 Cadence. Alle rechten voorbehouden.</span>
+          <span>
+            <a href="index.html">Home</a> · <a href="privacy.html">Privacyverklaring</a> ·
+            <a href="../terms.html" hreflang="en" lang="en">English</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+  </body>
+</html>

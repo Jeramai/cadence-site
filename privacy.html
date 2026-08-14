@@ -16,6 +16,9 @@
       content="How Cadence handles camera data, health data, and employer reporting. Pose estimation runs on the device and no camera frame is uploaded."
     />
     <meta name="robots" content="noindex" />
+    <link rel="alternate" hreflang="en" href="https://jeramai.github.io/cadence-site/privacy.html" />
+    <link rel="alternate" hreflang="nl" href="https://jeramai.github.io/cadence-site/nl/privacy.html" />
+    <link rel="alternate" hreflang="x-default" href="https://jeramai.github.io/cadence-site/privacy.html" />
     <meta name="theme-color" content="#f2f6f5" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0e1b19" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
@@ -36,7 +39,13 @@
       </div>
     </nav>
 
-    <button class="theme-fab" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+    <div class="utils">
+      <div class="lang" role="group" aria-label="Language">
+        <a href="privacy.html" hreflang="en" lang="en" aria-current="true">EN</a>
+        <a href="nl/privacy.html" hreflang="nl" lang="nl">NL</a>
+      </div>
+
+      <button class="theme-fab" id="theme-toggle" type="button" aria-label="Switch to dark theme">
       <svg class="icon-sun" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" aria-hidden="true">
         <circle cx="128" cy="128" r="52" />
         <line x1="128" y1="28" x2="128" y2="8" />
@@ -51,7 +60,8 @@
       <svg class="icon-moon" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" aria-hidden="true">
         <path d="M216 152A96 96 0 0 1 104 40a96 96 0 1 0 112 112Z" />
       </svg>
-    </button>
+      </button>
+    </div>
 
     <main id="main">
       <div class="wrap prose">

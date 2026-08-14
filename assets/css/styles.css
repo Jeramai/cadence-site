@@ -278,13 +278,56 @@ svg {
 
 /* ── Theme toggle ──────────────────────────────────────────────────────────── */
 
-/* Floats clear of the nav pill, bottom right. Below the mobile menu overlay (40)
-   so the open menu covers it rather than sitting on top of it. */
-.theme-fab {
+/* Utility cluster: floats clear of the nav pill, bottom right. Below the mobile
+   menu overlay (40) so an open menu covers it rather than it sitting on top. */
+.utils {
   position: fixed;
   right: var(--s-300);
   bottom: var(--s-300);
   z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--s-75);
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+  padding: var(--s-25);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: var(--shadow-nav);
+}
+
+.lang a {
+  display: grid;
+  place-items: center;
+  min-width: var(--s-400);
+  height: var(--s-400);
+  padding-inline: var(--s-75);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--text-faint);
+  transition: color 300ms var(--ease), background 300ms var(--ease);
+}
+
+.lang a:hover {
+  color: var(--brand-text);
+}
+
+.lang a[aria-current='true'] {
+  color: var(--on-brand);
+  background: var(--btn-bg);
+}
+
+.theme-fab {
   display: grid;
   place-items: center;
   width: var(--s-600);
@@ -298,6 +341,7 @@ svg {
   box-shadow: var(--shadow-nav);
   color: var(--text-dim);
   cursor: pointer;
+  flex-shrink: 0;
   transition: color 300ms var(--ease), background 300ms var(--ease),
     border-color 300ms var(--ease), transform 300ms var(--ease);
 }
