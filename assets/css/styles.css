@@ -1386,6 +1386,34 @@ a {
   background: var(--chip);
 }
 
+/* The app has its own light and dark themes, so the screenshots swap with the page.
+   Same mechanism as the brand mark: CSS, not <picture media>, because a media
+   attribute cannot see the theme toggle.
+
+   Qualified with `img` on purpose: `.shot img` above sets `display: block` and at
+   0,1,1 it outranks a bare `.shot__dark` at 0,1,0, so both images would render. */
+.shot img.shot__dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .shot img.shot__light {
+    display: none;
+  }
+
+  :root:not([data-theme='light']) .shot img.shot__dark {
+    display: block;
+  }
+}
+
+:root[data-theme='dark'] .shot img.shot__light {
+  display: none;
+}
+
+:root[data-theme='dark'] .shot img.shot__dark {
+  display: block;
+}
+
 .shot figcaption {
   padding: var(--s-200) var(--s-100) var(--s-50);
   font-size: 0.875rem;

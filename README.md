@@ -50,19 +50,35 @@ self hosted and every icon is inline SVG.
 
 ## Screenshots
 
-`assets/img/shots/` holds real captures from the app, not mockups. WebP, 720px wide, 332KB for
-all seven.
+`assets/img/shots/` holds real captures from the app, not mockups. WebP, 720px wide, 612KB for
+the twelve.
 
-**Captured once per language.** The app has its own `nl` catalogue, so the Dutch page shows the
-Dutch app — switch it in the app under You, Language, Nederlands, then restart the app so the
-native tab bar re-renders too.
+**Four sets: `{en,nl}/{light,dark}/`.** The app has its own `nl` catalogue and its own light and
+dark themes, so each page shows the app in the reader's language *and* the page's theme. Switch
+both in the app under You (Language / Theme), and **restart the app after a language change** so
+the native tab bar re-renders too.
 
 | File | Screen |
 | --- | --- |
-| `en/today.webp`, `nl/today.webp` | Home ring with the add-to-your-day sheet, showing points and tiers |
-| `en/library.webp`, `nl/library.webp` | Move library with detection labels |
-| `en/detail.webp`, `nl/detail.webp` | Push-up detail: how-to, phone placement, on-device line |
-| `en/privacy.webp` | The iOS camera permission dialog with the app's purpose string. **Unused.** |
+| `today.webp` | Home, all three rings live: move 24/30, water 6/8, steps 6,248/8,000 |
+| `library.webp` | Move library with detection labels |
+| `detail.webp` | Push-up detail: how-to, phone placement, on-device line |
+| `en/privacy.webp` | The iOS camera permission dialog with the app's purpose string. **Unused**, light only, English only (the string comes from `Info.plist` and is not localised). |
+
+The pairs swap in CSS (`.shot img.shot__light` / `.shot__dark`), not with `<picture media>`,
+because a media attribute cannot see the theme toggle. **Qualify those selectors with `img`** —
+`.shot img` sets `display: block` at 0,1,1 and outranks a bare `.shot__dark` at 0,1,0, which
+renders both images at once.
+
+### Staging the data
+
+A fresh install has empty rings, and points can only be earned through the camera or a 2 and 30
+minute timer, so the day was seeded through the app's own `logTask` / `addGlass` actions plus the
+health store. The seed lived in a temporary `src/features/ring/lib/__screenshotSeed.ts` in the app
+repo and **was removed afterwards**; the app repo is clean.
+
+Staging the ring numbers is fine and normal. Staging the **pose overlay** is not: the skeleton is
+the evidence for the claim this whole site rests on, so it only ever comes from a real device.
 
 The captions quote the app's own labels, so they must be re-checked against the screenshots if
 either the app copy or the shots change. English says *counted / approximate / beta*; Dutch says
