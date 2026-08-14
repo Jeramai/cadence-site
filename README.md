@@ -2,18 +2,25 @@
 
 Static landing page for the HR buyer, served by GitHub Pages from the `main` branch root.
 
-| Language | URL | Files |
+| Taal | URL | Files |
 | --- | --- | --- |
-| English | <https://jeramai.github.io/cadence-site/> | `index.html`, `privacy.html`, `terms.html` |
-| Nederlands | <https://jeramai.github.io/cadence-site/nl/> | `nl/index.html`, `nl/privacy.html`, `nl/voorwaarden.html` |
+| **Nederlands (root)** | <https://jeramai.github.io/cadence-site/> | `index.html`, `privacy.html`, `voorwaarden.html` |
+| English | <https://jeramai.github.io/cadence-site/en/> | `en/index.html`, `en/privacy.html`, `en/terms.html` |
+
+**Dutch owns the root** because the first market is the Netherlands. English sits under `/en/`.
+`hreflang="x-default"` points at the English page, since that is the better fallback for a
+visitor whose language is neither.
 
 Both share one stylesheet, one script and one set of assets. There is no build step and no
 translation tooling: the two page sets are maintained side by side, so **a copy change in one
 language needs the same change in the other**. The `hreflang` alternates and `sitemap.xml` list
 both, and the language switch sits next to the theme toggle at the bottom right.
 
-`404.html` is bilingual because Pages serves that one file for any missing path, including
-paths under `/nl/`.
+`404.html` leads in Dutch with an English line under it, because Pages serves that one file
+for any missing path, including paths under `/en/`.
+
+Social cards are per language: `assets/img/og.png` (Dutch, built from `_og.html`) and
+`assets/img/og-en.png` (English, from `_og-en.html`).
 
 **This repository is public and holds the site only.** The app lives in the private
 `Jeramai/cadence` repository, and its `docs/` folder holds pricing bands, the backlog and
@@ -38,7 +45,7 @@ self hosted and every icon is inline SVG.
 | Legal review | `privacy.html`, `terms.html` | Both are honest drafts, not reviewed by counsel. |
 | Pricing numbers | `index.html`, pricing section | Tiers ship without PEPM figures. `docs/PLAN.md` calls the bands directional. |
 | `noindex` | `index.html`, `privacy.html`, `terms.html` | The page is live and shareable but kept out of search while the contact address is a placeholder and the legal text is unreviewed. Delete the tag to be indexed. |
-| Canonical URL | `index.html`, `sitemap.xml`, `robots.txt` | Set to `jeramai.github.io/cadence-site`. Change if a custom domain lands. |
+| Canonical URLs | every page, `sitemap.xml`, `robots.txt` | Set to `jeramai.github.io/cadence-site`. Change if a custom domain lands. |
 | `/cadence-site/` paths | `404.html` | Absolute, because Pages serves 404 from the root for any depth. A custom domain makes these `/`. |
 
 ## Screenshot strip
