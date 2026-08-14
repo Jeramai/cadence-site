@@ -48,11 +48,45 @@ self hosted and every icon is inline SVG.
 | Canonical URLs | every page, `sitemap.xml`, `robots.txt` | Set to `jeramai.github.io/cadence-site`. Change if a custom domain lands. |
 | `/cadence-site/` paths | `404.html` | Absolute, because Pages serves 404 from the root for any depth. A custom domain makes these `/`. |
 
-## Screenshot strip
+## Screenshots
 
-`index.html` carries a commented section for three app screenshots. Drop `home.png`,
-`camera.png` and `library.png` into `assets/img/shots/` and delete the two comment markers.
-It is commented rather than `hidden` because a hidden section still fetches its images.
+`assets/img/shots/` holds real captures from the app, not mockups. WebP, 720px wide, 168KB for
+all four.
+
+| File | Screen | Used |
+| --- | --- | --- |
+| `today.webp` | Home ring with the "add to your day" sheet, showing points and tiers | yes |
+| `library.webp` | Move library with detection labels | yes |
+| `detail.webp` | Push-up detail: how-to, phone placement, on-device line | yes |
+| `privacy.webp` | The iOS camera permission dialog with the app's purpose string | **not yet** |
+
+`privacy.webp` is the strongest privacy evidence on hand, because iOS renders the sentence and
+it cannot be faked: *"Cadence uses your camera to count workout reps on-device. No video is
+recorded or uploaded."* Slot it into the privacy card or the Arbo section when you want it.
+
+### How to regenerate
+
+Captured on an iPhone 17 Pro simulator with
+[`@swmansion/argent`](https://github.com/software-mansion/argent), driven from the CLI so no MCP
+setup is needed:
+
+```
+npx --yes @swmansion/argent@latest run describe    --udid <udid>
+npx --yes @swmansion/argent@latest run gesture-tap --udid <udid> --x 0.5 --y 0.44
+npx --yes @swmansion/argent@latest run screenshot  --udid <udid> --scale 1.0 \
+  --includeImageInContext false --out shot.png
+```
+
+Three things that bit, worth knowing before you try:
+
+- **Build Release, not Debug.** A Debug simulator build fails to link with
+  `cannot link directly with 'SwiftUICore'`, an Xcode issue in the debug dylib it builds for
+  SwiftUI previews. Release skips that path and embeds the JS bundle, so it needs no Metro.
+- **The camera screen cannot be captured on a simulator.** It reports *"No front camera
+  available."* There is no preview to composite a room behind, and no skeleton or rep count. A
+  real camera screenshot needs a physical iPhone.
+- **Set the status bar first**, the way store screenshots do:
+  `xcrun simctl status_bar <udid> override --time 9:41 --batteryState charged --batteryLevel 100`
 
 ## Social card
 

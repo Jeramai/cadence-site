@@ -146,6 +146,7 @@
           <li><a href="#verification">Verification</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#configure">Configure</a></li>
+          <li><a href="#screens">Screens</a></li>
           <li><a href="#arbo">Arbo</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -195,6 +196,7 @@
       <a href="#verification">Verification</a>
       <a href="#how">How it works</a>
       <a href="#configure">Configure</a>
+      <a href="#screens">Screens</a>
       <a href="#arbo">Arbo and tax</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
@@ -678,25 +680,64 @@
       </section>
 
       <!-- ── Screenshot strip ──────────────────────────────────────────────
-           TO ENABLE: drop three PNGs into site/assets/img/shots/ named
-           home.png, camera.png and library.png (1170x2532, or any 9:19.5 crop),
-           then delete the two comment markers around this block.
-           Kept commented rather than hidden: a `hidden` section still fetches
-           its images, which is three 404s on every page load.
-
+           Real captures from the app on an iPhone 17 Pro simulator, taken with
+           @swmansion/argent. Regenerate with a Release build; the camera screen
+           cannot be captured on a simulator ("No front camera available").
+           ──────────────────────────────────────────────────────────────── -->
       <section class="section" id="screens">
         <div class="wrap">
           <p class="eyebrow" data-anim>Inside the app</p>
-          <h2 class="section-title" data-anim>What your team opens every morning.</h2>
-          <div class="grid grid--3">
-            <img data-anim src="../assets/img/shots/home.png" alt="The Cadence home screen showing the daily ring at 24 of 30 points" width="390" height="844" />
-            <img data-anim src="../assets/img/shots/camera.png" alt="A camera workout in progress with the rep counter and pose overlay" width="390" height="844" />
-            <img data-anim src="../assets/img/shots/library.png" alt="The move library showing detection trust badges on each exercise" width="390" height="844" />
+          <h2 class="section-title" data-anim>What your people actually open.</h2>
+          <p class="section-lede" data-anim>
+            Real screens, not mockups. Note what each one shows a buyer: the points a task is
+            worth, the tier behind it, and where the phone has to sit for the count to work.
+          </p>
+
+          <div class="shots">
+            <figure class="shot" data-anim>
+              <img
+                src="../assets/img/shots/today.webp"
+                alt="The Cadence home screen with the daily ring, above a sheet listing a camera workout worth 12 points marked verified, a stretch break worth 5 marked verified, a standing desk timer worth 8 marked assisted, and box breathing worth 4 marked assisted"
+                width="720"
+                height="1565"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>One ring, and what fills it</strong>
+                Every task shows its points and its tier before anyone taps it.
+              </figcaption>
+            </figure>
+
+            <figure class="shot" data-anim>
+              <img
+                src="../assets/img/shots/library.webp"
+                alt="The move library showing pinned moves and a list of exercises, each labelled with difficulty, muscle groups and a detection label such as counted approx or counted beta"
+                width="720"
+                height="1565"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>The library states its own limits</strong>
+                Moves are labelled counted, approximate or beta. The app does not pretend.
+              </figcaption>
+            </figure>
+
+            <figure class="shot" data-anim>
+              <img
+                src="../assets/img/shots/detail.webp"
+                alt="A move detail sheet for the push-up showing points per rep, three how-to steps, where to place the phone, a form tip, and a line reading that rep detection for this move is tuned and tested on device"
+                width="720"
+                height="1565"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>Form first, then the count</strong>
+                How to do it, where the phone goes, and whether detection is proven.
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
-
-           ──────────────────────────────────────────────────────────────── -->
 
       <!-- ── Pricing ──────────────────────────────────────────────────────── -->
       <section class="section" id="pricing">
@@ -997,6 +1038,7 @@
               <li><a href="#verification">Verification</a></li>
               <li><a href="#how">How it works</a></li>
               <li><a href="#configure">Configure</a></li>
+              <li><a href="#screens">Screens</a></li>
               <li><a href="#arbo">Arbo and tax</a></li>
               <li><a href="#pricing">Pricing</a></li>
             </ul>
