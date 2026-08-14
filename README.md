@@ -1,7 +1,19 @@
 # Cadence marketing site
 
-Static landing page for the HR buyer, served by GitHub Pages from the `main` branch root at
-<https://jeramai.github.io/cadence-site/>.
+Static landing page for the HR buyer, served by GitHub Pages from the `main` branch root.
+
+| Language | URL | Files |
+| --- | --- | --- |
+| English | <https://jeramai.github.io/cadence-site/> | `index.html`, `privacy.html`, `terms.html` |
+| Nederlands | <https://jeramai.github.io/cadence-site/nl/> | `nl/index.html`, `nl/privacy.html`, `nl/voorwaarden.html` |
+
+Both share one stylesheet, one script and one set of assets. There is no build step and no
+translation tooling: the two page sets are maintained side by side, so **a copy change in one
+language needs the same change in the other**. The `hreflang` alternates and `sitemap.xml` list
+both, and the language switch sits next to the theme toggle at the bottom right.
+
+`404.html` is bilingual because Pages serves that one file for any missing path, including
+paths under `/nl/`.
 
 **This repository is public and holds the site only.** The app lives in the private
 `Jeramai/cadence` repository, and its `docs/` folder holds pricing bands, the backlog and
@@ -62,6 +74,18 @@ Two things the light ground forced, both worth keeping:
 
 Every text and background pair in both themes clears WCAG AA for small text (4.5:1). The worst
 pair in light is 4.65:1.
+
+## Dutch copy
+
+The Dutch is not a literal translation. It uses the vocabulary a Dutch HR buyer and
+preventiemedewerker actually use, taken from the market research: verzuim, beeldschermwerk,
+klachten aan nek en schouder, RI&E, werkkostenregeling, gerichte arbovoorziening, vrije ruimte,
+ondernemingsraad, verwerkersovereenkomst. Keep those terms if you edit it. The research is
+explicit that an American wellness tone does not land here.
+
+Note that the Arbo and tax section and its FAQ entry are written for Dutch law, so the English
+page carries the same Dutch terms rather than translating them into something that does not
+exist.
 
 ## Theme toggle
 

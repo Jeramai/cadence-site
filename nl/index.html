@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      /* Zet een opgeslagen themakeuze vóór de eerste render, zodat er niets flikkert. */
+      try {
+        var t = localStorage.getItem('cadence-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadence — voorkom het verzuim dat achter het bureau begint</title>
+    <meta
+      name="description"
+      content="Ruim vier op de tien beeldschermwerkers zit zes uur of langer per dag achter een scherm, en 13 procent van de werkgebonden verzuimdagen komt daaruit voort. Cadence zet korte, met de camera geverifieerde beweging in de werkdag, in een app met jullie naam."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://jeramai.github.io/cadence-site/nl/" />
+    <link rel="alternate" hreflang="nl" href="https://jeramai.github.io/cadence-site/nl/" />
+    <link rel="alternate" hreflang="en" href="https://jeramai.github.io/cadence-site/" />
+    <link rel="alternate" hreflang="x-default" href="https://jeramai.github.io/cadence-site/" />
+    <meta name="theme-color" content="#f2f6f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1b19" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cadence" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:title" content="Voorkom het verzuim dat achter het bureau begint" />
+    <meta
+      property="og:description"
+      content="Korte, met de camera geverifieerde beweging in de werkdag, in een app met jullie naam. Gemaakt voor beeldschermwerk en de klachten aan nek, schouder en arm die daarbij horen."
+    />
+    <meta property="og:url" content="https://jeramai.github.io/cadence-site/nl/" />
+    <meta property="og:image" content="https://jeramai.github.io/cadence-site/assets/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+    <link rel="preload" href="../assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "inLanguage": "nl",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Neemt de camera beeld op of stuurt hij iets door?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Nee. De houdingsherkenning draait op de telefoon zelf. Er wordt geen beeld verstuurd, opgeslagen of bewaard, en niemand bij Cadence of bij jullie kan meekijken. Alleen de uitkomst verlaat het toestel: het aantal herhalingen, de seconden die zijn vastgehouden en de punten die dat oplevert."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kunnen medewerkers de ring sluiten zonder de camera te gebruiken?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, en zo is het bedoeld. Sta-timers, ademhaling, stappen, sta-uren en mindful minuten uit Apple Health of Health Connect voeden dezelfde ring. De camera is de weg met de hoogste waarde, nooit de enige weg. Deelname is het cijfer waarop jullie kopen, dus iedereen moet zijn ring kunnen sluiten."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wat ziet HR precies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Alleen geaggregeerde deelname. Gesloten ringen, reeksen en teamtotalen, geanonimiseerd. Cadence toont een werkgever geen individuele gezondheidsgegevens, geen persoonlijke oefenhistorie en geen houdingsdata uit de camera."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hoe voorkomen jullie dat mensen de ring bespelen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Elke invoer draagt een betrouwbaarheidsniveau. Machinaal geverifieerde en met een timer ondersteunde invoer kunnen de ring op eigen kracht sluiten. Aftekenen op eigen opgave is begrensd op ongeveer 40 procent van het dagdoel, zodat een deelnamecijfer nooit uit vinkjes alleen kan bestaan. Die grens zit waar de punten worden toegekend, niet in de interface."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hoe komt de app bij onze medewerkers terecht?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ze installeren Cadence en loggen in met jullie bedrijfsdomein. Vanaf het eerste scherm draagt de app jullie naam, jullie logo en jullie kleuren. Die huisstijl is standaard en is wat je mensen elke dag zien. Een eigen vermelding in de store onder jullie bedrijfsnaam is een betaalde uitbreiding en niet het uitgangspunt, omdat bijna identieke apps in de publieke App Store tegen de regels voor dubbele apps aanlopen. Waar een besloten vermelding echt nodig is gebruiken we Apple Business Manager en het beheerde equivalent op Play, waarvoor jullie een account nodig hebben."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "We hebben al een platform voor vitaliteit. Waarom dit erbij?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "De meeste platforms lossen een ander probleem op. Mentale hulp, sportnetwerken en benefitsportalen staan naast Cadence en niet erboven, en geen van alle raakt de klachten aan nek en schouder die uit beeldschermwerk komen. Draaien jullie er al een, dan is de eerlijke toets of iets in de huidige stapel iemand tijdens de werkdag uit zijn stoel krijgt en kan laten zien dat het gebeurd is. Een vierde app die niemand opent helpt niemand, en daarom is het hele ontwerp korte sessies, jullie huisstijl en verificatie."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is dit een arbomaatregel of een secundaire arbeidsvoorwaarde?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Het is gebouwd als arbomaatregel. Staat Cadence in jullie RI&E als maatregel tegen beeldschermwerk en de klachten die daaruit volgen, dan kan het kwalificeren als gerichte arbovoorziening binnen de werkkostenregeling. Dan geven jullie het onbelast en gaat het niet ten koste van de vrije ruimte. Wij leveren de RI&E-tekst, de pagina voor de OR en de verwerkersovereenkomst. Laat de fiscale behandeling bevestigen door je eigen adviseur, want die hangt af van jullie risico-inventarisatie en van het gebruik."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Waar staan onze gegevens?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In jullie eigen database, in een regio die jullie kiezen. Cadence draait één project per bedrijf en geen gedeelde database met meerdere klanten, dus er is geen tabel waarin de rijen van een andere werkgever naast die van jullie staan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Welke talen zitten erbij?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Het basispakket is Engels. Elke extra taal is een betaalde uitbreiding, per bedrijf aan te zetten. Een bedrijf dat één taal afneemt ziet nooit een taalkeuze in de app."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wat gebeurt er met onze gegevens als we stoppen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Jullie krijgen een volledige export en wij verwijderen het project. Omdat de database alleen van jullie is, is verwijderen het weggooien van één project en niet het uitfilteren van rijen uit een gedeelde tabel."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Naar de inhoud</a>
+
+    <nav class="nav" id="nav" aria-label="Hoofdmenu">
+      <div class="nav__pill">
+        <a class="nav__brand" href="#top" aria-label="Cadence home">
+          <img class="brandmark--light" src="../assets/img/logo-ink.svg" alt="" width="24" height="24" />
+          <img class="brandmark--dark" src="../assets/img/logo.svg" alt="" width="24" height="24" />
+          <span>Cadence</span>
+        </a>
+
+        <ul class="nav__links">
+          <li><a href="#verificatie">Verificatie</a></li>
+          <li><a href="#werking">Zo werkt het</a></li>
+          <li><a href="#inrichten">Inrichten</a></li>
+          <li><a href="#arbo">Arbo</a></li>
+          <li><a href="#prijzen">Prijzen</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <a class="btn btn--primary btn--sm" href="#demo">Plan een demo</a>
+
+        <button
+          class="nav__burger"
+          id="burger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="menu"
+          aria-label="Menu openen"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="utils">
+      <div class="lang" role="group" aria-label="Taal">
+        <a href="../" hreflang="en" lang="en">EN</a>
+        <a href="index.html" hreflang="nl" lang="nl" aria-current="true">NL</a>
+      </div>
+
+      <button class="theme-fab" id="theme-toggle" type="button" aria-label="Wissel naar donker thema">
+        <svg class="icon-sun" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" aria-hidden="true">
+          <circle cx="128" cy="128" r="52" />
+          <line x1="128" y1="28" x2="128" y2="8" />
+          <line x1="128" y1="248" x2="128" y2="228" />
+          <line x1="28" y1="128" x2="8" y2="128" />
+          <line x1="248" y1="128" x2="228" y2="128" />
+          <line x1="57" y1="57" x2="43" y2="43" />
+          <line x1="213" y1="213" x2="199" y2="199" />
+          <line x1="57" y1="199" x2="43" y2="213" />
+          <line x1="213" y1="43" x2="199" y2="57" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" aria-hidden="true">
+          <path d="M216 152A96 96 0 0 1 104 40a96 96 0 1 0 112 112Z" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="menu" id="menu" data-open="false" hidden>
+      <a href="#verificatie">Verificatie</a>
+      <a href="#werking">Zo werkt het</a>
+      <a href="#inrichten">Inrichten</a>
+      <a href="#arbo">Arbo en fiscaal</a>
+      <a href="#prijzen">Prijzen</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <main id="main">
+      <span id="top"></span>
+
+      <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+      <section class="hero">
+        <div class="wrap hero__grid">
+          <div>
+            <p class="eyebrow">Preventie beeldschermwerk</p>
+            <h1>Bijna de helft van je beeldschermwerkers heeft al klachten aan nek of schouder.</h1>
+            <p class="hero__sub">
+              Zes uur per dag achter een scherm is inmiddels normaal, en 13 procent van de
+              werkgebonden verzuimdagen komt daaruit voort. Cadence zet korte, met de camera
+              geverifieerde beweging in de werkdag, in een app die jullie naam draagt. Jij ziet
+              wie het echt doet.
+            </p>
+
+            <div class="hero__cta">
+              <a class="btn btn--primary btn--wide" href="#demo">Plan een demo</a>
+              <a class="btn btn--ghost btn--wide" href="#verificatie">Zo werkt de verificatie</a>
+            </div>
+
+            <p class="hero__proof">
+              <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                <circle cx="128" cy="128" r="88" />
+                <polyline points="88,128 116,156 168,104" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              De analyse draait op het toestel zelf. Er verlaat geen enkel camerabeeld de telefoon.
+            </p>
+          </div>
+
+          <div class="phone" data-anim>
+            <div class="phone__screen">
+              <div class="phone__head">
+                <span class="phone__date">Vandaag</span>
+                <span class="phone__streak">18 dagen op rij</span>
+              </div>
+
+              <div class="ring-wrap">
+                <svg class="ring" viewBox="0 0 200 200" role="img" aria-label="Dagring op 24 van de 30 punten">
+                  <circle class="ring__track" cx="100" cy="100" r="82" />
+                  <circle class="ring__arc" cx="100" cy="100" r="82" style="--len: 515; --off: 103" />
+                </svg>
+                <div class="ring__center">
+                  <div class="ring__value">24<span class="ring__goal">/30</span></div>
+                  <div class="ring__unit">Punten</div>
+                </div>
+              </div>
+
+              <div class="phone__tasks">
+                <div class="task">
+                  <span class="task__dot task__dot--move"></span>
+                  <span class="task__name">Camera-oefening</span>
+                  <span class="task__pts">12</span>
+                </div>
+                <div class="task">
+                  <span class="task__dot task__dot--break"></span>
+                  <span class="task__name">Sta-bureau</span>
+                  <span class="task__pts">8</span>
+                </div>
+                <div class="task">
+                  <span class="task__dot task__dot--recover"></span>
+                  <span class="task__name">Box-ademhaling</span>
+                  <span class="task__pts">4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Cijfers ──────────────────────────────────────────────────────── -->
+      <section class="stats" aria-label="De omvang van het probleem">
+        <div class="wrap">
+          <div class="stats__grid">
+            <div data-anim>
+              <div class="stat__num">45%</div>
+              <p class="stat__label">van de werknemers zit zes uur of langer per dag achter een scherm</p>
+            </div>
+            <div data-anim>
+              <div class="stat__num">45%</div>
+              <p class="stat__label">van hen meldt klachten aan nek, schouder, pols of arm</p>
+            </div>
+            <div data-anim>
+              <div class="stat__num">13%</div>
+              <p class="stat__label">van de werkgebonden verzuimdagen komt door lang beeldschermwerk</p>
+            </div>
+            <div data-anim>
+              <div class="stat__num">299</div>
+              <p class="stat__label">euro, gemiddelde loondoorbetaling per werkgebonden verzuimdag</p>
+            </div>
+          </div>
+          <p class="stats__source" data-anim>
+            Bronnen: TNO-factsheets fysieke belasting, december 2025, en TNO Arbobalans 2024.
+            Zie <a href="#bronnen">de volledige lijst</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Probleem ─────────────────────────────────────────────────────── -->
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Het probleem</p>
+          <h2 class="section-title" data-anim>
+            Een goede stoel helpt niet als de pauzes er toch bij inschieten.
+          </h2>
+          <p class="section-lede" data-anim>
+            Het ziekteverzuim kwam in het eerste kwartaal van 2026 uit op 5,8 procent, het
+            hoogste in dertig jaar. Ontwikkelaars, juristen, accountants en beleidsadviseurs
+            zitten zes uur of langer achter een scherm. Het advies dat zij krijgen, wissel van
+            houding, neem pauze, werk staand, rek even, is precies het advies dat op een drukke
+            dag sneuvelt. Cadence maakt de pauze kort genoeg om te nemen en controleert dat hij
+            genomen is.
+          </p>
+
+          <div class="grid grid--2">
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <rect x="32" y="72" width="192" height="144" rx="16" />
+                  <circle cx="128" cy="144" r="36" />
+                  <path d="M96 72l16 -28h32l16 28" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>De camera telt mee</h3>
+              <p>
+                Zet de telefoon neer en doe de oefening. Cadence leest dertig keer per seconde
+                de houding uit en rekent de herhaling pas mee als de beweging het hele bereik
+                doorloopt. Een halve squat telt niet. Niemand hoeft er eerlijk over te zijn, en
+                dat is precies wat telt als jij het deelnamecijfer moet verdedigen.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <path d="M208 96c0 72 -80 112 -80 112S48 168 48 96V56a8 8 0 0 1 8 -8h144a8 8 0 0 1 8 8Z" stroke-linejoin="round" />
+                  <polyline points="96,124 118,146 162,102" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>En ziet nooit iets</h3>
+              <p>
+                Het model draait op de telefoon zelf. Er wordt geen beeld verstuurd, opgeslagen
+                of aan iemand getoond. De ondernemingsraad beoordeelt een app die een aantal
+                herhalingen doorgeeft, geen app die meekijkt met medewerkers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Tagline ──────────────────────────────────────────────────────── -->
+      <section class="reveal-section section--deep">
+        <div class="wrap">
+          <p class="reveal" data-reveal>
+            Dertig punten per dag, gehaald met echte beweging.
+            Geteld door de telefoon, nooit op erewoord.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Verificatie ──────────────────────────────────────────────────── -->
+      <section class="section" id="verificatie">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Verificatie</p>
+          <h2 class="section-title" data-anim>Elk punt op de ring draagt een niveau van bewijs.</h2>
+          <p class="section-lede" data-anim>
+            Dat niveau ligt vast bij het punt zelf en wordt niet bepaald in de interface. Dat is
+            wat een teamuitdaging eerlijk houdt, en wat het deelnamecijfer overeind houdt zodra
+            iemand vraagt hoe jullie het weten.
+          </p>
+
+          <div class="tiers">
+            <div class="tier tier--verified" data-anim>
+              <span class="badge badge--verified">Geverifieerd</span>
+              <h3>Aangetoond door een machine</h3>
+              <p>
+                Met de camera getelde herhalingen en rekhoudingen. Stappen, sta-uren en mindful
+                minuten uit Apple Health of Android Health Connect.
+              </p>
+              <p class="tier__cap">Sluit de ring op eigen kracht</p>
+            </div>
+
+            <div class="tier" data-anim>
+              <span class="badge badge--assisted">Ondersteund</span>
+              <h3>Aangetoond door een timer</h3>
+              <p>
+                Sessies aan het sta-bureau, begeleide ademhaling en oogpauzes, gemeten met een
+                timer die echt moet lopen terwijl iemand het doet.
+              </p>
+              <p class="tier__cap">Sluit de ring op eigen kracht</p>
+            </div>
+
+            <div class="tier" data-anim>
+              <span class="badge badge--self">Eigen opgave</span>
+              <h3>Op vertrouwen, en begrensd</h3>
+              <p>
+                Trap genomen. Naar de lunch gelopen. Nuttig als opstap voor wie nog niet klaar
+                is om een camera op zichzelf te richten.
+              </p>
+              <p class="tier__cap">Begrensd op ongeveer 40 procent van het dagdoel</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Zo werkt het ─────────────────────────────────────────────────── -->
+      <section class="section section--deep" id="werking">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Zo werkt het</p>
+          <h2 class="section-title" data-anim>Drie stappen, en één daarvan is van jullie.</h2>
+
+          <div class="grid grid--3">
+            <div class="step" data-anim>
+              <p class="step__n">Stap 01</p>
+              <h3>Jullie kiezen de taken</h3>
+              <p>
+                Bepaal welke invoer meetelt voor jullie mensen, stel het dagdoel in en bepaal
+                wat elke taak waard is. Een softwarebedrijf en een gemeente hebben niet hetzelfde
+                menu nodig.
+              </p>
+            </div>
+
+            <div class="step" data-anim>
+              <p class="step__n">Stap 02</p>
+              <h3>Je mensen sluiten één ring</h3>
+              <p>
+                Eén doel per dag, gevoed door bewegen, pauze nemen en herstellen. Hij sluit met
+                een camerasessie, een sta-sessie of een wandeling. Reeksen en teamuitdagingen
+                trekken het voorbij week twee.
+              </p>
+            </div>
+
+            <div class="step" data-anim>
+              <p class="step__n">Stap 03</p>
+              <h3>Jullie lezen deelname</h3>
+              <p>
+                Gesloten ringen en reeksen, geaggregeerd en geanonimiseerd. Jullie zien nooit de
+                gezondheidsgegevens van een individu, en de app is zo gebouwd dat het ook niet
+                kan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Inrichten ────────────────────────────────────────────────────── -->
+      <section class="section" id="inrichten">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Eigen huisstijl</p>
+          <h2 class="section-title" data-anim>Stem de ring af op hoe jullie mensen echt werken.</h2>
+          <p class="section-lede" data-anim>
+            Cadence draagt jullie naam, jullie kleuren en jullie logo, en het takenmenu is
+            configuratie in plaats van een wens op een lijst. Dit zijn startpunten voor de
+            sectoren met de meeste schermtijd, en elk ervan is aan te passen.
+          </p>
+
+          <div class="grid grid--4">
+            <div class="preset" data-anim>
+              <h3>Software en ICT</h3>
+              <ul class="preset__list">
+                <li>Nek en schouder rekken</li>
+                <li>Oogpauzes op een timer</li>
+                <li>Sessies aan het sta-bureau</li>
+                <li>Camera-oefeningen</li>
+              </ul>
+            </div>
+
+            <div class="preset" data-anim>
+              <h3>Finance en juridisch</h3>
+              <ul class="preset__list">
+                <li>Pols en onderarm rekken</li>
+                <li>Rekpauzes achter het bureau</li>
+                <li>Box-ademhaling</li>
+                <li>Sta-uren</li>
+              </ul>
+            </div>
+
+            <div class="preset" data-anim>
+              <h3>Overheid</h3>
+              <ul class="preset__list">
+                <li>Microbreaks tussen overleggen</li>
+                <li>Borstopener en zijwaartse buiging</li>
+                <li>Wandelend vergaderen</li>
+                <li>Lunch zonder scherm</li>
+              </ul>
+            </div>
+
+            <div class="preset" data-anim>
+              <h3>Hybride teams</h3>
+              <ul class="preset__list">
+                <li>Stappen vanaf een smartwatch</li>
+                <li>Wandelend vergaderen</li>
+                <li>Camera-oefeningen thuis</li>
+                <li>Teamuitdagingen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Voordelen ────────────────────────────────────────────────────── -->
+      <section class="section section--deep">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Waarom HR hiervoor kiest</p>
+          <h2 class="section-title" data-anim>Wat een benefitsportaal jullie niet kan geven.</h2>
+
+          <div class="grid grid--3">
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <polyline points="40,180 96,124 140,168 216,92" stroke-linecap="round" stroke-linejoin="round" />
+                  <polyline points="216,140 216,92 168,92" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>Deelname die je kunt verdedigen</h3>
+              <p>
+                Rapporteer een cijfer waarin het machinaal geverifieerde deel losstaat van de
+                eigen opgave, omdat het niveau met het punt meereist.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <circle cx="128" cy="128" r="88" />
+                  <circle cx="128" cy="128" r="52" />
+                  <circle cx="128" cy="128" r="16" />
+                </svg>
+              </div>
+              <h3>Iedereen kan hem sluiten</h3>
+              <p>
+                46 oefeningen in de bibliotheek, plus timers, ademhaling en data van de
+                smartwatch. Wie nooit een squat naast zijn bureau doet, sluit zijn ring ook.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <rect x="52" y="116" width="152" height="100" rx="12" />
+                  <path d="M92 116V76a36 36 0 0 1 72 0v40" stroke-linecap="round" />
+                  <circle cx="128" cy="164" r="10" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <h3>Privacy die de OR doorstaat</h3>
+              <p>
+                De herkenning draait op het toestel. Beelden worden nooit weggeschreven of
+                verstuurd. Daarmee kun je met een recht antwoord naar de ondernemingsraad.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <rect x="36" y="84" width="76" height="132" rx="8" />
+                  <rect x="144" y="40" width="76" height="176" rx="8" />
+                  <line x1="68" y1="128" x2="80" y2="128" stroke-linecap="round" />
+                  <line x1="176" y1="88" x2="188" y2="88" stroke-linecap="round" />
+                  <line x1="176" y1="140" x2="188" y2="140" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Jullie database, jullie regio</h3>
+              <p>
+                Eén project per bedrijf. Geen gedeelde tabel waarin de rijen van een andere
+                werkgever naast die van jullie staan, en verwijderen is één project weggooien.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <line x1="48" y1="80" x2="208" y2="80" stroke-linecap="round" />
+                  <line x1="48" y1="176" x2="208" y2="176" stroke-linecap="round" />
+                  <circle cx="100" cy="80" r="20" />
+                  <circle cx="160" cy="176" r="20" />
+                </svg>
+              </div>
+              <h3>Een build, geen wensenlijst</h3>
+              <p>
+                Jullie naam, kleuren, logo, takenmenu, dagdoel en talen zijn configuratie. Een
+                bedrijf omkleuren is bij ons één bestand aanpassen.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <circle cx="96" cy="96" r="36" />
+                  <path d="M32 200a72 72 0 0 1 128 0" stroke-linecap="round" />
+                  <path d="M168 68a36 36 0 0 1 0 56" stroke-linecap="round" />
+                  <path d="M188 148a72 72 0 0 1 36 52" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Teams, geen openbare ranglijst</h3>
+              <p>
+                Afdeling tegen afdeling, op geaggregeerde gesloten ringen. Geen ranglijst die de
+                cijfers van de ene medewerker naast die van de andere zet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Arbo en fiscaal ──────────────────────────────────────────────── -->
+      <section class="section" id="arbo">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Arbo en fiscaal</p>
+          <h2 class="section-title" data-anim>Zet het in de RI&amp;E en het is geen extraatje meer.</h2>
+          <p class="section-lede" data-anim>
+            Een algemene vitaliteitsapp is een arbeidsvoorwaarde en gaat dus ten koste van de
+            vrije ruimte binnen de werkkostenregeling. Een maatregel tegen een vastgesteld
+            arbeidsrisico is iets anders. Staat Cadence in jullie RI&amp;E als maatregel tegen
+            beeldschermwerk en de klachten die daaruit volgen, dan kan het kwalificeren als
+            gerichte arbovoorziening. Die geven jullie onbelast, buiten die vrije ruimte om.
+          </p>
+
+          <div class="grid grid--3">
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <path d="M180 40H76a12 12 0 0 0 -12 12v152a12 12 0 0 0 12 12h104a12 12 0 0 0 12 -12V52a12 12 0 0 0 -12 -12Z" stroke-linejoin="round" />
+                  <line x1="96" y1="96" x2="160" y2="96" stroke-linecap="round" />
+                  <line x1="96" y1="128" x2="160" y2="128" stroke-linecap="round" />
+                  <line x1="96" y1="160" x2="132" y2="160" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Tekst voor de RI&amp;E</h3>
+              <p>
+                Concepttekst die jullie preventiemedewerker rechtstreeks in de
+                risico-inventarisatie kan zetten, gekoppeld aan de arbocatalogus voor
+                beeldschermwerk.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <circle cx="96" cy="100" r="32" />
+                  <circle cx="168" cy="100" r="32" />
+                  <path d="M32 196a68 68 0 0 1 128 0" stroke-linecap="round" />
+                  <path d="M168 164a68 68 0 0 1 56 32" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Eén pagina voor de OR</h3>
+              <p>
+                Eén pagina over wat de camera wel en niet doet, geschreven om gelezen te worden
+                door een ondernemingsraad en niet door een engineer.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <path d="M172 36H84a12 12 0 0 0 -12 12v160a12 12 0 0 0 12 12h88a12 12 0 0 0 12 -12V48a12 12 0 0 0 -12 -12Z" stroke-linejoin="round" />
+                  <polyline points="104,140 122,158 156,116" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>Verwerkersovereenkomst</h3>
+              <p>
+                Een verwerkersovereenkomst die klaarligt om te tekenen, met het overzicht dat
+                laat zien dat een camerabeeld nooit een gegeven is dat wij bewaren.
+              </p>
+            </div>
+          </div>
+
+          <p class="section-note" data-anim>
+            Dit is hoe de regeling bedoeld is, geen fiscaal advies. Of een specifieke uitrol
+            kwalificeert hangt af van jullie RI&amp;E en van hoe de app gebruikt wordt. Laat de
+            behandeling bevestigen door je eigen adviseur voordat je erop begroot.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Prijzen ──────────────────────────────────────────────────────── -->
+      <section class="section" id="prijzen">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Prijzen</p>
+          <h2 class="section-title" data-anim>
+            Per medewerker per maand, gestaffeld naar bedrijfsgrootte.
+          </h2>
+          <p class="section-lede" data-anim>
+            Bij elk pakket horen eenmalige inrichtingskosten en een minimale jaarafname, omdat
+            elke klant een eigen build, een eigen ondertekening en een eigen database krijgt. Wij
+            offreren op basis van het aantal medewerkers en het pakket dat jullie nodig hebben.
+          </p>
+
+          <div class="grid grid--3">
+            <div class="plan" data-anim>
+              <h3>Start</h3>
+              <p class="plan__for">Kleine teams die van een spreadsheet af willen</p>
+              <ul class="plan__list">
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>De dagring en reeksen</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Camera-oefeningen en rekhoudingen</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Jullie huisstijl en jullie build</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Inloggen met bedrijfsmail</li>
+              </ul>
+              <a class="btn btn--ghost" href="#demo">Vraag een offerte</a>
+            </div>
+
+            <div class="plan plan--mid" data-anim>
+              <h3>Groei</h3>
+              <p class="plan__for">De gangbare vorm, 200 tot 2000 medewerkers</p>
+              <ul class="plan__list">
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Alles uit Start</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Teamuitdagingen</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Apple Health en Health Connect</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Eigen takenmenu en dagdoel</li>
+              </ul>
+              <a class="btn btn--primary" href="#demo">Vraag een offerte</a>
+            </div>
+
+            <div class="plan" data-anim>
+              <h3>Enterprise</h3>
+              <p class="plan__for">2000 en meer, of een compliance-afdeling</p>
+              <ul class="plan__list">
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Alles uit Groei</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>SSO en jullie eigen identityprovider</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Dataopslag in de regio die jullie kiezen</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Beheeromgeving en vaste contactpersoon</li>
+              </ul>
+              <a class="btn btn--ghost" href="#demo">Vraag een offerte</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+      <section class="section section--deep" id="faq">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Vragen</p>
+          <h2 class="section-title" data-anim>De tien dingen die elke koper ons vraagt.</h2>
+
+          <div class="faq" data-anim>
+            <details>
+              <summary>
+                Neemt de camera beeld op of stuurt hij iets door?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Nee. De houdingsherkenning draait op de telefoon zelf. Er wordt geen beeld
+                verstuurd, opgeslagen of bewaard, en niemand bij Cadence of bij jullie kan
+                meekijken. Alleen de uitkomst verlaat het toestel: het aantal herhalingen, de
+                seconden die zijn vastgehouden en de punten die dat oplevert.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Kunnen medewerkers de ring sluiten zonder de camera te gebruiken?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Ja, en zo is het bedoeld. Sta-timers, ademhaling, stappen, sta-uren en mindful
+                minuten uit Apple Health of Health Connect voeden dezelfde ring. De camera is de
+                weg met de hoogste waarde, nooit de enige weg. Deelname is het cijfer waarop
+                jullie kopen, dus iedereen moet zijn ring kunnen sluiten.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Wat ziet HR precies?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Alleen geaggregeerde deelname. Gesloten ringen, reeksen en teamtotalen,
+                geanonimiseerd. Cadence toont een werkgever geen individuele
+                gezondheidsgegevens, geen persoonlijke oefenhistorie en geen houdingsdata uit de
+                camera.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Hoe voorkomen jullie dat mensen de ring bespelen?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Elke invoer draagt een betrouwbaarheidsniveau. Machinaal geverifieerde en met
+                een timer ondersteunde invoer kunnen de ring op eigen kracht sluiten. Aftekenen
+                op eigen opgave is begrensd op ongeveer 40 procent van het dagdoel, zodat een
+                deelnamecijfer nooit uit vinkjes alleen kan bestaan. Die grens zit waar de punten
+                worden toegekend, niet in de interface.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Hoe komt de app bij onze medewerkers terecht?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Ze installeren Cadence en loggen in met jullie bedrijfsdomein. Vanaf het eerste
+                scherm draagt de app jullie naam, jullie logo en jullie kleuren. Die huisstijl is
+                standaard en is wat je mensen elke dag zien. Een eigen vermelding in de store
+                onder jullie bedrijfsnaam is een betaalde uitbreiding en niet het uitgangspunt,
+                omdat bijna identieke apps in de publieke App Store tegen de regels voor dubbele
+                apps aanlopen. Waar een besloten vermelding echt nodig is gebruiken we Apple
+                Business Manager en het beheerde equivalent op Play, waarvoor jullie een account
+                nodig hebben.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                We hebben al een platform voor vitaliteit. Waarom dit erbij?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                De meeste platforms lossen een ander probleem op. Mentale hulp, sportnetwerken en
+                benefitsportalen staan naast Cadence en niet erboven, en geen van alle raakt de
+                klachten aan nek en schouder die uit beeldschermwerk komen. Draaien jullie er al
+                een, dan is de eerlijke toets of iets in de huidige stapel iemand tijdens de
+                werkdag uit zijn stoel krijgt en kan laten zien dat het gebeurd is. Een vierde
+                app die niemand opent helpt niemand, en daarom is het hele ontwerp korte
+                sessies, jullie huisstijl en verificatie.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Is dit een arbomaatregel of een secundaire arbeidsvoorwaarde?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Het is gebouwd als arbomaatregel. Staat Cadence in jullie RI&amp;E als maatregel
+                tegen beeldschermwerk en de klachten die daaruit volgen, dan kan het kwalificeren
+                als gerichte arbovoorziening binnen de werkkostenregeling. Dan geven jullie het
+                onbelast en gaat het niet ten koste van de vrije ruimte. Wij leveren de
+                RI&amp;E-tekst, de pagina voor de OR en de verwerkersovereenkomst. Laat de
+                fiscale behandeling bevestigen door je eigen adviseur, want die hangt af van
+                jullie risico-inventarisatie en van het gebruik.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Waar staan onze gegevens?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                In jullie eigen database, in een regio die jullie kiezen. Cadence draait één
+                project per bedrijf en geen gedeelde database met meerdere klanten, dus er is
+                geen tabel waarin de rijen van een andere werkgever naast die van jullie staan.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Welke talen zitten erbij?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Het basispakket is Engels. Elke extra taal is een betaalde uitbreiding, per
+                bedrijf aan te zetten. Een bedrijf dat één taal afneemt ziet nooit een taalkeuze
+                in de app.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Wat gebeurt er met onze gegevens als we stoppen?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Jullie krijgen een volledige export en wij verwijderen het project. Omdat de
+                database alleen van jullie is, is verwijderen het weggooien van één project en
+                niet het uitfilteren van rijen uit een gedeelde tabel.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Demo ─────────────────────────────────────────────────────────── -->
+      <section class="section" id="demo">
+        <div class="wrap">
+          <div class="cta" data-anim>
+            <h2>Zie in een kwartier een ring sluiten, geverifieerd.</h2>
+            <p>
+              We doen live één camerasessie, laten zien wat de niveaus met een deelnamecijfer
+              doen en beantwoorden de privacyvraag zoals het hoort. Laat weten hoeveel
+              medewerkers jullie hebben en we sturen daarna een offerte.
+            </p>
+
+            <form class="form" id="demo-form" novalidate>
+              <div>
+                <label for="email">Zakelijk e-mailadres</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="jij@bedrijf.nl"
+                  required
+                  aria-describedby="email-err"
+                />
+              </div>
+              <p class="form__err" id="email-err" role="alert"></p>
+              <button class="btn btn--primary btn--wide" type="submit" id="demo-submit">
+                Plan een demo
+              </button>
+              <p class="form__ok" id="demo-ok" hidden></p>
+            </form>
+
+            <p class="cta__risk">
+              Geen platformkosten om het te beoordelen. We bouwen een pilot in jullie huisstijl
+              voor één afdeling, voordat jullie je aan een aantal medewerkers verbinden.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Bronnen ──────────────────────────────────────────────────────── -->
+      <section class="section section--deep" id="bronnen">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Bronnen</p>
+          <h2 class="section-title" data-anim>Elk cijfer op deze pagina, en waar het vandaan komt.</h2>
+
+          <ul class="sources" data-anim>
+            <li>
+              <strong>45 procent met zes uur of meer beeldschermwerk, en 45 procent van hen met
+              klachten aan nek, schouder, pols of arm. 13 procent van de werkgebonden
+              verzuimdagen.</strong>
+              TNO, drie factsheets over fysieke belasting, 11 december 2025.
+              <a href="https://www.tno.nl/nl/newsroom/2025/12/drie-nieuwe-factsheets-fysieke/" rel="noopener">tno.nl</a>
+            </li>
+            <li>
+              <strong>299 euro gemiddelde loondoorbetaling per werkgebonden verzuimdag.</strong>
+              TNO Arbobalans 2024, cijfer over 2023. In de praktijk ligt het totaal per
+              verzuimdag hoger zodra vervanging en productieverlies meetellen.
+            </li>
+            <li>
+              <strong>5,8 procent ziekteverzuim in het eerste kwartaal van 2026, het hoogste in
+              dertig jaar.</strong>
+              CBS, juni 2026.
+              <a href="https://www.cbs.nl/nl-nl/nieuws/2026/23/ziekteverzuim-in-eerste-kwartaal-hoger-dan-gemiddeld-in-afgelopen-30-jaar" rel="noopener">cbs.nl</a>
+            </li>
+            <li>
+              <strong>34 oefeningen, 12 rekhoudingen, drie niveaus van verificatie.</strong>
+              Geteld in de oefeningenbibliotheek van Cadence, augustus 2026.
+            </li>
+          </ul>
+
+          <p class="section-note" data-anim>
+            Onderzoek naar bewegen op het werk laat het duidelijkste effect zien op klachten aan
+            het bewegingsapparaat en op functioneren. Het effect op ziekteverzuim als geheel is
+            kleiner en wisselender, en hangt sterk af van hoeveel mensen meedoen. Daarom vragen
+            wij om deelname en klachten te meten in een pilot, voordat iemand een verzuimcijfer
+            in een business case zet.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer__grid">
+          <div>
+            <div class="footer__brand">
+              <img class="brandmark--light" src="../assets/img/logo-ink.svg" alt="" width="32" height="32" />
+              <img class="brandmark--dark" src="../assets/img/logo.svg" alt="" width="32" height="32" />
+              <span>Cadence</span>
+            </div>
+            <p class="footer__tag">
+              Fitness in minutes. Een white-label app die korte, geverifieerde beweging in de
+              werkdag zet, gemaakt voor de mensen die hem achter een scherm doorbrengen.
+            </p>
+          </div>
+
+          <div>
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#verificatie">Verificatie</a></li>
+              <li><a href="#werking">Zo werkt het</a></li>
+              <li><a href="#inrichten">Inrichten</a></li>
+              <li><a href="#arbo">Arbo en fiscaal</a></li>
+              <li><a href="#prijzen">Prijzen</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Bedrijf</h4>
+            <ul>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#bronnen">Bronnen</a></li>
+              <li><a href="privacy.html">Privacyverklaring</a></li>
+              <li><a href="voorwaarden.html">Voorwaarden</a></li>
+              <li><a href="../" hreflang="en" lang="en">English</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__base">
+          <span>Copyright 2026 Cadence. Alle rechten voorbehouden.</span>
+          <span>Gebouwd met herkenning op het toestel zelf. Geen enkel camerabeeld verlaat de telefoon.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js" defer></script>
+  </body>
+</html>
