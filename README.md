@@ -50,15 +50,24 @@ self hosted and every icon is inline SVG.
 
 ## Screenshots
 
-`assets/img/shots/` holds real captures from the app, not mockups. WebP, 720px wide, 168KB for
-all four.
+`assets/img/shots/` holds real captures from the app, not mockups. WebP, 720px wide, 332KB for
+all seven.
 
-| File | Screen | Used |
-| --- | --- | --- |
-| `today.webp` | Home ring with the "add to your day" sheet, showing points and tiers | yes |
-| `library.webp` | Move library with detection labels | yes |
-| `detail.webp` | Push-up detail: how-to, phone placement, on-device line | yes |
-| `privacy.webp` | The iOS camera permission dialog with the app's purpose string | **not yet** |
+**Captured once per language.** The app has its own `nl` catalogue, so the Dutch page shows the
+Dutch app — switch it in the app under You, Language, Nederlands, then restart the app so the
+native tab bar re-renders too.
+
+| File | Screen |
+| --- | --- |
+| `en/today.webp`, `nl/today.webp` | Home ring with the add-to-your-day sheet, showing points and tiers |
+| `en/library.webp`, `nl/library.webp` | Move library with detection labels |
+| `en/detail.webp`, `nl/detail.webp` | Push-up detail: how-to, phone placement, on-device line |
+| `en/privacy.webp` | The iOS camera permission dialog with the app's purpose string. **Unused.** |
+
+The captions quote the app's own labels, so they must be re-checked against the screenshots if
+either the app copy or the shots change. English says *counted / approximate / beta*; Dutch says
+*WORDT GETELD / ONGEVEER / BETA*, and the tiers are *GEVERIFIEERD* and *ONDERSTEUND*, which are
+the same words the Dutch page uses for its trust tiers.
 
 `privacy.webp` is the strongest privacy evidence on hand, because iOS renders the sentence and
 it cannot be faked: *"Cadence uses your camera to count workout reps on-device. No video is
