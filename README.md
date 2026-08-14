@@ -65,8 +65,9 @@ pair in light is 4.65:1.
 
 ## Theme toggle
 
-The button in the nav pill sets `data-theme` on `<html>` and stores the choice under
-`cadence-theme`. With nothing stored the page follows the operating system.
+The floating button at the bottom right sets `data-theme` on `<html>` and stores the choice
+under `cadence-theme`. With nothing stored the page follows the operating system. It sits
+below the mobile menu overlay so an open menu covers it.
 
 The dark palette is written twice on purpose: once under `@media (prefers-color-scheme: dark)`
 for readers with no JavaScript, and once under `:root[data-theme='dark']` so the toggle can
