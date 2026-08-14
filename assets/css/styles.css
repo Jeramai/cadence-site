@@ -278,55 +278,65 @@ svg {
 
 /* ── Theme toggle ──────────────────────────────────────────────────────────── */
 
-.nav__theme {
+/* Floats clear of the nav pill, bottom right. Below the mobile menu overlay (40)
+   so the open menu covers it rather than sitting on top of it. */
+.theme-fab {
+  position: fixed;
+  right: var(--s-300);
+  bottom: var(--s-300);
+  z-index: 30;
   display: grid;
   place-items: center;
-  width: var(--s-400);
-  height: var(--s-400);
-  flex-shrink: 0;
-  border: 0;
+  width: var(--s-600);
+  height: var(--s-600);
   padding: 0;
-  background: transparent;
-  color: var(--text-dim);
+  border: 1px solid var(--border);
   border-radius: 9999px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: var(--shadow-nav);
+  color: var(--text-dim);
   cursor: pointer;
-  transition: color 300ms var(--ease), background 300ms var(--ease);
+  transition: color 300ms var(--ease), background 300ms var(--ease),
+    border-color 300ms var(--ease), transform 300ms var(--ease);
 }
 
-.nav__theme:hover {
+.theme-fab:hover {
   color: var(--brand-text);
-  background: var(--tint-brand);
+  border-color: var(--brand-text);
+  transform: translateY(-2px);
 }
 
-.nav__theme:active {
+.theme-fab:active {
   transform: scale(0.94);
 }
 
-.nav__theme svg {
+.theme-fab svg {
   width: var(--s-300);
   height: var(--s-300);
 }
 
 /* Sun in light, moon in dark: the icon shows the theme you are in. */
-.nav__theme .icon-moon {
+.theme-fab .icon-moon {
   display: none;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .nav__theme .icon-sun {
+  :root:not([data-theme='light']) .theme-fab .icon-sun {
     display: none;
   }
 
-  :root:not([data-theme='light']) .nav__theme .icon-moon {
+  :root:not([data-theme='light']) .theme-fab .icon-moon {
     display: block;
   }
 }
 
-:root[data-theme='dark'] .nav__theme .icon-sun {
+:root[data-theme='dark'] .theme-fab .icon-sun {
   display: none;
 }
 
-:root[data-theme='dark'] .nav__theme .icon-moon {
+:root[data-theme='dark'] .theme-fab .icon-moon {
   display: block;
 }
 
@@ -528,14 +538,6 @@ a {
 @media (min-width: 900px) {
   .nav__links {
     display: flex;
-  }
-}
-
-/* Below the links breakpoint the pill still carries brand, theme, CTA and burger.
-   The wide gap pushed the CTA label onto two lines at 390px. */
-@media (max-width: 899px) {
-  .nav__pill {
-    gap: var(--s-100);
   }
 }
 
