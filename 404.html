@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      /* Applies a stored theme choice before first paint, so the toggle never flashes. */
+      try {
+        var t = localStorage.getItem('cadence-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found — Cadence</title>
+    <meta name="description" content="That page does not exist. Go back to the Cadence home page." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f2f6f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1b19" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/cadence-site/assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/cadence-site/assets/css/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__pill">
+        <a class="nav__brand" href="/cadence-site/" aria-label="Cadence home">
+          <img class="brandmark--light" src="/cadence-site/assets/img/logo-ink.svg" alt="" width="24" height="24" />
+          <img class="brandmark--dark" src="/cadence-site/assets/img/logo.svg" alt="" width="24" height="24" />
+          <span>Cadence</span>
+        </a>
+        <button class="nav__theme" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg class="icon-sun" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" aria-hidden="true">
+            <circle cx="128" cy="128" r="52" />
+            <line x1="128" y1="28" x2="128" y2="8" />
+            <line x1="128" y1="248" x2="128" y2="228" />
+            <line x1="28" y1="128" x2="8" y2="128" />
+            <line x1="248" y1="128" x2="228" y2="128" />
+            <line x1="57" y1="57" x2="43" y2="43" />
+            <line x1="213" y1="213" x2="199" y2="199" />
+            <line x1="57" y1="199" x2="43" y2="213" />
+            <line x1="213" y1="43" x2="199" y2="57" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" aria-hidden="true">
+            <path d="M216 152A96 96 0 0 1 104 40a96 96 0 1 0 112 112Z" />
+          </svg>
+        </button>
+
+        <a class="btn btn--primary btn--sm" href="/cadence-site/#demo">Book a demo</a>
+      </div>
+    </nav>
+
+    <main id="main">
+      <div class="wrap notfound">
+        <p class="notfound__code">404</p>
+        <h1>This page does not exist.</h1>
+        <p>
+          The link may be old, or the address may have a typo in it. Everything about Cadence
+          lives on one page.
+        </p>
+        <div class="notfound__row">
+          <a class="btn btn--primary btn--wide" href="/cadence-site/">Back to the home page</a>
+          <a class="btn btn--ghost btn--wide" href="/cadence-site/#faq">Read the FAQ</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer__base">
+          <span>Copyright 2026 Cadence. All rights reserved.</span>
+          <span>
+            <a href="/cadence-site/privacy.html">Privacy policy</a> ·
+            <a href="/cadence-site/terms.html">Terms</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

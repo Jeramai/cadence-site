@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      /* Applies a stored theme choice before first paint, so the toggle never flashes. */
+      try {
+        var t = localStorage.getItem('cadence-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Terms — Cadence</title>
+    <meta
+      name="description"
+      content="Terms covering use of the Cadence website and the Cadence corporate wellness app."
+    />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f2f6f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1b19" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__pill">
+        <a class="nav__brand" href="index.html" aria-label="Cadence home">
+          <img class="brandmark--light" src="assets/img/logo-ink.svg" alt="" width="24" height="24" />
+          <img class="brandmark--dark" src="assets/img/logo.svg" alt="" width="24" height="24" />
+          <span>Cadence</span>
+        </a>
+        <button class="nav__theme" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg class="icon-sun" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" aria-hidden="true">
+            <circle cx="128" cy="128" r="52" />
+            <line x1="128" y1="28" x2="128" y2="8" />
+            <line x1="128" y1="248" x2="128" y2="228" />
+            <line x1="28" y1="128" x2="8" y2="128" />
+            <line x1="248" y1="128" x2="228" y2="128" />
+            <line x1="57" y1="57" x2="43" y2="43" />
+            <line x1="213" y1="213" x2="199" y2="199" />
+            <line x1="57" y1="199" x2="43" y2="213" />
+            <line x1="213" y1="43" x2="199" y2="57" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" aria-hidden="true">
+            <path d="M216 152A96 96 0 0 1 104 40a96 96 0 1 0 112 112Z" />
+          </svg>
+        </button>
+
+        <a class="btn btn--primary btn--sm" href="index.html#demo">Book a demo</a>
+      </div>
+    </nav>
+
+    <main id="main">
+      <div class="wrap prose">
+        <h1>Terms</h1>
+        <p class="prose__meta">
+          Draft of 14 August 2026. This document has not yet been reviewed by counsel. The
+          binding terms for any deployment are the ones in the signed agreement with your
+          employer.
+        </p>
+
+        <h2>This website</h2>
+        <p>
+          This site describes the Cadence product. Descriptions of features, tiers, and roadmap
+          items may change. Nothing on this site is an offer, a quote, or a commitment to
+          deliver a specific feature on a specific date.
+        </p>
+
+        <h2>The app</h2>
+        <p>
+          Cadence is sold to employers, who make it available to their staff. Your right to use
+          the app comes from your employer's agreement with us. If that agreement ends, access
+          ends with it.
+        </p>
+
+        <h2>Not medical advice</h2>
+        <p>
+          Cadence suggests movement and counts it. It is not a medical device and it does not
+          give medical advice. Repetition counting and form feedback are informational. Speak to
+          a qualified professional before you start a new exercise routine, and stop if
+          something hurts.
+        </p>
+
+        <h2>Participation is voluntary</h2>
+        <p>
+          Camera sessions are opt in. The daily ring can be closed without ever using the camera.
+          How an employer chooses to encourage participation is a matter between that employer
+          and its staff.
+        </p>
+
+        <h2>Acceptable use</h2>
+        <p>
+          Do not attempt to falsify ring credit, extract another user's data, or redistribute a
+          company build outside the organisation it was issued to. Builds are distributed by
+          direct link and are intended for the staff of the licensed company only.
+        </p>
+
+        <h2>Availability</h2>
+        <p>
+          We aim for continuous availability but do not guarantee it on this website. Service
+          levels for a deployment, where they exist, are set out in the signed agreement.
+        </p>
+
+        <h2>Contact</h2>
+        <p>Write to legal@cadence.example with any question about these terms.</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer__base">
+          <span>Copyright 2026 Cadence. All rights reserved.</span>
+          <span>
+            <a href="index.html">Home</a> · <a href="privacy.html">Privacy policy</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

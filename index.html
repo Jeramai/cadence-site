@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      /* Applies a stored theme choice before first paint, so the toggle never flashes. */
+      try {
+        var t = localStorage.getItem('cadence-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadence — corporate wellness that proves the workout happened</title>
+    <meta
+      name="description"
+      content="Cadence counts reps and stretch holds with the phone camera, entirely on device. Your people close one daily ring. You get a participation number backed by machine verification, not an honour system."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://jeramai.github.io/cadence-site/" />
+    <meta name="theme-color" content="#f2f6f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1b19" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cadence" />
+    <meta property="og:title" content="Corporate wellness that proves the workout happened" />
+    <meta
+      property="og:description"
+      content="On device camera verification for reps and stretch holds. One daily ring your whole workforce can close. Per company branded builds."
+    />
+    <meta property="og:url" content="https://jeramai.github.io/cadence-site/" />
+    <meta property="og:image" content="https://jeramai.github.io/cadence-site/assets/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+    <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does the camera record or upload video?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Pose estimation runs on the phone. No frame is uploaded, stored, or transmitted, and nobody at Cadence or at your company can see a camera feed. Only the derived result, meaning reps counted and points earned, ever leaves the device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can employees close the ring without ever using the camera?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, and that is the design. Standing timers, guided breathing, steps, stand hours, and mindful minutes from Apple Health or Health Connect all feed the same ring. The camera is the highest value path, never the only one."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does HR actually see?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Aggregate participation only. Ring closes, streak rates, and team challenge totals, anonymised. Cadence does not expose individual health data, individual workout logs, or camera derived form data to an employer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you stop people from gaming the ring?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every input carries a trust tier. Machine verified inputs and timer assisted inputs can close the ring on their own. Honour system check offs are capped at roughly 40 percent of the daily goal, so a participation number can never be made of check boxes alone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the app reach our employees?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Each company gets its own build, distributed as an unlisted App Store app and the Play equivalent. It does not appear in search, charts, or categories. Employees install it from a direct link that you give them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where does our data live?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In your own database, in a region you pick. Cadence runs one project per company rather than a shared multi tenant database, so there is no shared table holding another employer's rows next to yours."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which languages are included?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The base package ships English. Every additional language is a paid add on, enabled per company. A company that buys one language never sees a language switcher."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens to our data if we leave?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You get a full export and we delete the project. Because the database is yours alone, deletion is dropping one project rather than filtering rows out of a shared table."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <nav class="nav" id="nav" aria-label="Primary">
+      <div class="nav__pill">
+        <a class="nav__brand" href="#top" aria-label="Cadence home">
+          <img class="brandmark--light" src="assets/img/logo-ink.svg" alt="" width="24" height="24" />
+          <img class="brandmark--dark" src="assets/img/logo.svg" alt="" width="24" height="24" />
+          <span>Cadence</span>
+        </a>
+
+        <ul class="nav__links">
+          <li><a href="#verification">Verification</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#configure">Configure</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <button class="nav__theme" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <svg class="icon-sun" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" aria-hidden="true">
+            <circle cx="128" cy="128" r="52" />
+            <line x1="128" y1="28" x2="128" y2="8" />
+            <line x1="128" y1="248" x2="128" y2="228" />
+            <line x1="28" y1="128" x2="8" y2="128" />
+            <line x1="248" y1="128" x2="228" y2="128" />
+            <line x1="57" y1="57" x2="43" y2="43" />
+            <line x1="213" y1="213" x2="199" y2="199" />
+            <line x1="57" y1="199" x2="43" y2="213" />
+            <line x1="213" y1="43" x2="199" y2="57" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" aria-hidden="true">
+            <path d="M216 152A96 96 0 0 1 104 40a96 96 0 1 0 112 112Z" />
+          </svg>
+        </button>
+
+        <a class="btn btn--primary btn--sm" href="#demo">Book a demo</a>
+
+        <button
+          class="nav__burger"
+          id="burger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="menu"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="menu" id="menu" data-open="false" hidden>
+      <a href="#verification">Verification</a>
+      <a href="#how">How it works</a>
+      <a href="#configure">Configure</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <main id="main">
+      <span id="top"></span>
+
+      <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+      <section class="hero">
+        <div class="wrap hero__grid">
+          <div>
+            <p class="eyebrow">Corporate wellness</p>
+            <h1>
+              The only wellness app that can prove<br />
+              the workout actually happened.
+            </h1>
+            <p class="hero__sub">
+              Cadence counts reps and stretch holds through the phone camera, entirely on
+              device. Your people close one daily ring. You get a participation number that
+              is not an honour system.
+            </p>
+
+            <div class="hero__cta">
+              <a class="btn btn--primary btn--wide" href="#demo">Book a demo</a>
+              <a class="btn btn--ghost btn--wide" href="#verification">See how verification works</a>
+            </div>
+
+            <p class="hero__proof">
+              <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                <circle cx="128" cy="128" r="88" />
+                <polyline points="88,128 116,156 168,104" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              On device pose tracking. Zero camera frames leave the phone.
+            </p>
+          </div>
+
+          <div class="phone" data-anim>
+            <div class="phone__screen">
+              <div class="phone__head">
+                <span class="phone__date">Today</span>
+                <span class="phone__streak">18 day streak</span>
+              </div>
+
+              <div class="ring-wrap">
+                <svg class="ring" viewBox="0 0 200 200" role="img" aria-label="Daily ring at 24 of 30 points">
+                  <circle class="ring__track" cx="100" cy="100" r="82" />
+                  <circle
+                    class="ring__arc"
+                    cx="100"
+                    cy="100"
+                    r="82"
+                    style="--len: 515; --off: 103"
+                  />
+                </svg>
+                <div class="ring__center">
+                  <div class="ring__value">24<span class="ring__goal">/30</span></div>
+                  <div class="ring__unit">Points</div>
+                </div>
+              </div>
+
+              <div class="phone__tasks">
+                <div class="task">
+                  <span class="task__dot task__dot--move"></span>
+                  <span class="task__name">Camera workout</span>
+                  <span class="task__pts">12</span>
+                </div>
+                <div class="task">
+                  <span class="task__dot task__dot--break"></span>
+                  <span class="task__name">Standing desk</span>
+                  <span class="task__pts">8</span>
+                </div>
+                <div class="task">
+                  <span class="task__dot task__dot--recover"></span>
+                  <span class="task__name">Box breathing</span>
+                  <span class="task__pts">4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Stat strip ───────────────────────────────────────────────────── -->
+      <section class="stats" aria-label="Cadence by the numbers">
+        <div class="wrap">
+          <div class="stats__grid">
+            <div data-anim>
+              <div class="stat__num">34</div>
+              <p class="stat__label">Workout moves in the library</p>
+            </div>
+            <div data-anim>
+              <div class="stat__num">12</div>
+              <p class="stat__label">Camera tracked stretch holds</p>
+            </div>
+            <div data-anim>
+              <div class="stat__num">3</div>
+              <p class="stat__label">Trust tiers behind every point</p>
+            </div>
+            <div data-anim>
+              <div class="stat__num">0</div>
+              <p class="stat__label">Camera frames that leave the phone</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Problem to solution ──────────────────────────────────────────── -->
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>The problem</p>
+          <h2 class="section-title" data-anim>
+            You are paying for a wellness platform and reporting a number you cannot defend.
+          </h2>
+          <p class="section-lede" data-anim>
+            Steps get shaken. Challenges get logged from a desk chair. Every platform in this
+            market runs on the honour system, so the participation figure on your renewal deck
+            is a count of check boxes. Cadence puts a machine between the claim and the credit.
+          </p>
+
+          <div class="grid grid--2">
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <rect x="32" y="72" width="192" height="144" rx="16" />
+                  <circle cx="128" cy="144" r="36" />
+                  <path d="M96 72l16 -28h32l16 28" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>The camera does the counting</h3>
+              <p>
+                Point the phone, do the set. Cadence reads body position 30 times a second and
+                counts the rep only when the movement passes through the full range. A half
+                squat does not score. Nobody is asked to be honest about it.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <path d="M208 96c0 72 -80 112 -80 112S48 168 48 96V56a8 8 0 0 1 8 -8h144a8 8 0 0 1 8 8Z" stroke-linejoin="round" />
+                  <polyline points="96,124 118,146 162,102" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>And it never sees anything</h3>
+              <p>
+                The pose model runs on the phone itself. No frame is uploaded, stored, or shown
+                to anyone. Your works council reviews an app that reports a rep count, not an
+                app that watches employees.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Tagline reveal ───────────────────────────────────────────────── -->
+      <section class="reveal-section section--deep">
+        <div class="wrap">
+          <p class="reveal" data-reveal>
+            Thirty points a day, closed by real movement.
+            Counted by the phone, never by the honour system.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Verification tiers ───────────────────────────────────────────── -->
+      <section class="section" id="verification">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Verification</p>
+          <h2 class="section-title" data-anim>Every point on the ring carries a trust tier.</h2>
+          <p class="section-lede" data-anim>
+            The tier is stored with the point, not decided in the interface. That is what keeps
+            a team challenge honest and what makes the participation number hold up when someone
+            asks how you know.
+          </p>
+
+          <div class="tiers">
+            <div class="tier tier--verified" data-anim>
+              <span class="badge badge--verified">Verified</span>
+              <h3>Proven by a machine</h3>
+              <p>
+                Camera counted reps and stretch holds. Steps, stand hours, and mindful minutes
+                read from Apple Health or Android Health Connect.
+              </p>
+              <p class="tier__cap">Can close the ring on its own</p>
+            </div>
+
+            <div class="tier" data-anim>
+              <span class="badge badge--assisted">Assisted</span>
+              <h3>Proven by a timer</h3>
+              <p>
+                Standing desk sessions, guided breathing, and eye breaks, measured by a timer
+                that has to actually run while the person is doing it.
+              </p>
+              <p class="tier__cap">Can close the ring on its own</p>
+            </div>
+
+            <div class="tier" data-anim>
+              <span class="badge badge--self">Self report</span>
+              <h3>Taken on trust, and capped</h3>
+              <p>
+                Took the stairs. Walked to lunch. Useful as an on ramp for someone who is not
+                ready to point a camera at themselves yet.
+              </p>
+              <p class="tier__cap">Capped at roughly 40 percent of the daily goal</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── How it works ─────────────────────────────────────────────────── -->
+      <section class="section section--deep" id="how">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>How it works</p>
+          <h2 class="section-title" data-anim>Three steps, and one of them is yours.</h2>
+
+          <div class="grid grid--3">
+            <div class="step" data-anim>
+              <p class="step__n">Step 01</p>
+              <h3>You pick the tasks</h3>
+              <p>
+                Choose which inputs count for your workforce, set the daily goal, and set what
+                each task is worth. A software firm and a warehouse do not need the same menu.
+              </p>
+            </div>
+
+            <div class="step" data-anim>
+              <p class="step__n">Step 02</p>
+              <h3>Your people close one ring</h3>
+              <p>
+                One target a day, fed by moving, taking a break, and recovering. It closes with
+                a camera set, a standing session, or a walk. Streaks and team challenges carry
+                it past week two.
+              </p>
+            </div>
+
+            <div class="step" data-anim>
+              <p class="step__n">Step 03</p>
+              <h3>You read participation</h3>
+              <p>
+                Aggregate ring closes and streak rates, anonymised. You never see an individual's
+                health data, and the app is built so that you cannot.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Configure ────────────────────────────────────────────────────── -->
+      <section class="section" id="configure">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Per company builds</p>
+          <h2 class="section-title" data-anim>Tune the ring to the way your people actually work.</h2>
+          <p class="section-lede" data-anim>
+            Cadence ships as your own app, with your name, your palette, and your logo. The task
+            menu is configuration, not a feature request. These are starting points, and every
+            one of them is editable.
+          </p>
+
+          <div class="grid grid--4">
+            <div class="preset" data-anim>
+              <h3>Desk heavy</h3>
+              <ul class="preset__list">
+                <li>Standing desk sessions</li>
+                <li>Eye breaks on a timer</li>
+                <li>Desk stretch holds</li>
+                <li>Camera workouts</li>
+              </ul>
+            </div>
+
+            <div class="preset" data-anim>
+              <h3>Warehouse and field</h3>
+              <ul class="preset__list">
+                <li>Recovery stretch holds</li>
+                <li>Guided breathing</li>
+                <li>Mobility routines</li>
+                <li>Screen off lunch</li>
+              </ul>
+            </div>
+
+            <div class="preset" data-anim>
+              <h3>Contact centre</h3>
+              <ul class="preset__list">
+                <li>Micro breaks</li>
+                <li>Box breathing</li>
+                <li>Neck and shoulder holds</li>
+                <li>Stand and move hours</li>
+              </ul>
+            </div>
+
+            <div class="preset" data-anim>
+              <h3>Hybrid teams</h3>
+              <ul class="preset__list">
+                <li>Steps from a watch</li>
+                <li>Walking meetings</li>
+                <li>Camera workouts at home</li>
+                <li>Team challenges</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Benefits ─────────────────────────────────────────────────────── -->
+      <section class="section section--deep">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Why HR teams pick it</p>
+          <h2 class="section-title" data-anim>What you get that a benefits portal cannot give you.</h2>
+
+          <div class="grid grid--3">
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <polyline points="40,180 96,124 140,168 216,92" stroke-linecap="round" stroke-linejoin="round" />
+                  <polyline points="216,140 216,92 168,92" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3>Participation you can defend</h3>
+              <p>
+                Report a figure where the machine verified share is separated from the self
+                reported share, because the tier travels with the point.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <circle cx="128" cy="128" r="88" />
+                  <circle cx="128" cy="128" r="52" />
+                  <circle cx="128" cy="128" r="16" />
+                </svg>
+              </div>
+              <h3>Everyone can close it</h3>
+              <p>
+                46 moves in the library, plus timers, breathing, and watch data. Someone who will
+                never squat beside their desk still closes their ring.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <rect x="52" y="116" width="152" height="100" rx="12" />
+                  <path d="M92 116V76a36 36 0 0 1 72 0v40" stroke-linecap="round" />
+                  <circle cx="128" cy="164" r="10" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <h3>Privacy that survives review</h3>
+              <p>
+                Pose runs on the device. Frames are never written to disk or sent anywhere.
+                Bring it to your works council with a straight answer.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <rect x="36" y="84" width="76" height="132" rx="8" />
+                  <rect x="144" y="40" width="76" height="176" rx="8" />
+                  <line x1="68" y1="128" x2="80" y2="128" stroke-linecap="round" />
+                  <line x1="176" y1="88" x2="188" y2="88" stroke-linecap="round" />
+                  <line x1="176" y1="140" x2="188" y2="140" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Your database, your region</h3>
+              <p>
+                One project per company. No shared table holding another employer's rows beside
+                yours, and deletion means dropping a project.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <line x1="48" y1="80" x2="208" y2="80" stroke-linecap="round" />
+                  <line x1="48" y1="176" x2="208" y2="176" stroke-linecap="round" />
+                  <circle cx="100" cy="80" r="20" />
+                  <circle cx="160" cy="176" r="20" />
+                </svg>
+              </div>
+              <h3>A build, not a feature request</h3>
+              <p>
+                Your name, palette, logo, task menu, goal, and language set are configuration.
+                Reskinning a company is a single file swap on our side.
+              </p>
+            </div>
+
+            <div class="card" data-anim>
+              <div class="card__icon">
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true">
+                  <circle cx="96" cy="96" r="36" />
+                  <path d="M32 200a72 72 0 0 1 128 0" stroke-linecap="round" />
+                  <path d="M168 68a36 36 0 0 1 0 56" stroke-linecap="round" />
+                  <path d="M188 148a72 72 0 0 1 36 52" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3>Teams, not a public leaderboard</h3>
+              <p>
+                Department against department, on aggregate ring closes. No global ranking that
+                puts one employee's numbers next to another's.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Screenshot strip ──────────────────────────────────────────────
+           TO ENABLE: drop three PNGs into site/assets/img/shots/ named
+           home.png, camera.png and library.png (1170x2532, or any 9:19.5 crop),
+           then delete the two comment markers around this block.
+           Kept commented rather than hidden: a `hidden` section still fetches
+           its images, which is three 404s on every page load.
+
+      <section class="section" id="screens">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Inside the app</p>
+          <h2 class="section-title" data-anim>What your team opens every morning.</h2>
+          <div class="grid grid--3">
+            <img data-anim src="assets/img/shots/home.png" alt="The Cadence home screen showing the daily ring at 24 of 30 points" width="390" height="844" />
+            <img data-anim src="assets/img/shots/camera.png" alt="A camera workout in progress with the rep counter and pose overlay" width="390" height="844" />
+            <img data-anim src="assets/img/shots/library.png" alt="The move library showing detection trust badges on each exercise" width="390" height="844" />
+          </div>
+        </div>
+      </section>
+
+           ──────────────────────────────────────────────────────────────── -->
+
+      <!-- ── Pricing ──────────────────────────────────────────────────────── -->
+      <section class="section" id="pricing">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Pricing</p>
+          <h2 class="section-title" data-anim>Per employee, per month, tiered by company size.</h2>
+          <p class="section-lede" data-anim>
+            Every tier includes a setup fee and a minimum annual commitment, because each client
+            gets its own build, its own signing identity, and its own database. We quote on
+            headcount and the tier you need.
+          </p>
+
+          <div class="grid grid--3">
+            <div class="plan" data-anim>
+              <h3>Starter</h3>
+              <p class="plan__for">Small teams getting off a spreadsheet</p>
+              <ul class="plan__list">
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>The daily ring and streaks</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Camera workouts and stretch holds</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Your branding and your build</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Email and domain login</li>
+              </ul>
+              <a class="btn btn--ghost" href="#demo">Get a quote</a>
+            </div>
+
+            <div class="plan plan--mid" data-anim>
+              <h3>Business</h3>
+              <p class="plan__for">The common shape, 200 to 2000 people</p>
+              <ul class="plan__list">
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Everything in Starter</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Team challenges</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Apple Health and Health Connect</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Custom task menu and goal</li>
+              </ul>
+              <a class="btn btn--primary" href="#demo">Get a quote</a>
+            </div>
+
+            <div class="plan" data-anim>
+              <h3>Enterprise</h3>
+              <p class="plan__for">2000 and up, or a compliance team</p>
+              <ul class="plan__list">
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Everything in Business</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>SSO and your identity provider</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Data residency of your choice</li>
+                <li><svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="24" aria-hidden="true"><polyline points="56,132 100,176 200,76" stroke-linecap="round" stroke-linejoin="round" /></svg>Admin dashboard and named support</li>
+              </ul>
+              <a class="btn btn--ghost" href="#demo">Get a quote</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+      <section class="section section--deep" id="faq">
+        <div class="wrap">
+          <p class="eyebrow" data-anim>Questions</p>
+          <h2 class="section-title" data-anim>The eight things every buyer asks us.</h2>
+
+          <div class="faq" data-anim>
+            <details>
+              <summary>
+                Does the camera record or upload video?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                No. Pose estimation runs on the phone. No frame is uploaded, stored, or
+                transmitted, and nobody at Cadence or at your company can see a camera feed.
+                Only the derived result, meaning reps counted and points earned, ever leaves
+                the device.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Can employees close the ring without ever using the camera?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Yes, and that is the design. Standing timers, guided breathing, steps, stand
+                hours, and mindful minutes from Apple Health or Health Connect all feed the same
+                ring. The camera is the highest value path, never the only one. Participation is
+                the number you buy on, so the ring has to be closeable by everyone.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                What does HR actually see?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Aggregate participation only. Ring closes, streak rates, and team challenge
+                totals, anonymised. Cadence does not expose individual health data, individual
+                workout logs, or camera derived form data to an employer.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                How do you stop people from gaming the ring?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Every input carries a trust tier. Machine verified and timer assisted inputs can
+                close the ring on their own. Honour system check offs are capped at roughly 40
+                percent of the daily goal, so a participation number can never be made of check
+                boxes alone. The cap is enforced where the points are awarded, not in the
+                interface.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                How does the app reach our employees?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                Each company gets its own build, distributed as an unlisted App Store app and the
+                Play equivalent. It does not appear in search, charts, or categories. Employees
+                install it from a direct link that you give them, and account login gates who can
+                use it.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Where does our data live?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                In your own database, in a region you pick. Cadence runs one project per company
+                rather than a shared multi tenant database, so there is no shared table holding
+                another employer's rows next to yours.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                Which languages are included?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                The base package ships English. Every additional language is a paid add on,
+                enabled per company. A company that buys one language never sees a language
+                switcher in the app.
+              </p>
+            </details>
+
+            <details>
+              <summary>
+                What happens to our data if we leave?
+                <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" aria-hidden="true"><line x1="48" y1="128" x2="208" y2="128" stroke-linecap="round" /><line x1="128" y1="48" x2="128" y2="208" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="faq__a">
+                You get a full export and we delete the project. Because the database is yours
+                alone, deletion is dropping one project rather than filtering rows out of a
+                shared table.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Final CTA ────────────────────────────────────────────────────── -->
+      <section class="section" id="demo">
+        <div class="wrap">
+          <div class="cta" data-anim>
+            <h2>See a ring close, verified, in about fifteen minutes.</h2>
+            <p>
+              We walk one camera set live, show you what the trust tiers do to a participation
+              figure, and answer the privacy question properly. Tell us your headcount and we
+              will send a quote after.
+            </p>
+
+            <form class="form" id="demo-form" novalidate>
+              <div>
+                <label for="email">Work email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="you@company.com"
+                  required
+                  aria-describedby="email-err"
+                />
+              </div>
+              <p class="form__err" id="email-err" role="alert"></p>
+              <button class="btn btn--primary btn--wide" type="submit" id="demo-submit">
+                Book a demo
+              </button>
+              <p class="form__ok" id="demo-ok" hidden></p>
+            </form>
+
+            <p class="cta__risk">
+              No platform fee to evaluate. We build a branded pilot for one department before you
+              commit to a headcount.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer__grid">
+          <div>
+            <div class="footer__brand">
+              <img class="brandmark--light" src="assets/img/logo-ink.svg" alt="" width="32" height="32" />
+          <img class="brandmark--dark" src="assets/img/logo.svg" alt="" width="32" height="32" />
+              <span>Cadence</span>
+            </div>
+            <p class="footer__tag">
+              Fitness in minutes. A white label corporate wellness app where one daily ring is
+              closed by movement your phone can verify.
+            </p>
+          </div>
+
+          <div>
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#verification">Verification</a></li>
+              <li><a href="#how">How it works</a></li>
+              <li><a href="#configure">Configure</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="privacy.html">Privacy policy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+              <li><a href="#demo">Book a demo</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__base">
+          <span>Copyright 2026 Cadence. All rights reserved.</span>
+          <span>Built with on device pose tracking. No camera frame ever leaves the phone.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
