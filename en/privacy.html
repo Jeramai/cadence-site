@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      /* Applies a stored theme choice before first paint, so the toggle never flashes. */
+      try {
+        var t = localStorage.getItem('cadence-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy — Cadence</title>
+    <meta
+      name="description"
+      content="How Cadence handles camera data, health data, and employer reporting. Pose estimation runs on the device and no camera frame is uploaded."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://jeramai.github.io/cadence-site/en/privacy.html" />
+    <link rel="alternate" hreflang="en" href="https://jeramai.github.io/cadence-site/en/privacy.html" />
+    <link rel="alternate" hreflang="nl" href="https://jeramai.github.io/cadence-site/privacy.html" />
+    <link rel="alternate" hreflang="x-default" href="https://jeramai.github.io/cadence-site/en/privacy.html" />
+    <meta name="theme-color" content="#f2f6f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1b19" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__pill">
+        <a class="nav__brand" href="index.html" aria-label="Cadence home">
+          <img class="brandmark--light" src="../assets/img/logo-ink.svg" alt="" width="24" height="24" />
+          <img class="brandmark--dark" src="../assets/img/logo.svg" alt="" width="24" height="24" />
+          <span>Cadence</span>
+        </a>
+        <a class="btn btn--primary btn--sm" href="index.html#demo">Book a demo</a>
+      </div>
+    </nav>
+
+    <div class="utils">
+      <div class="lang" role="group" aria-label="Language">
+        <a href="privacy.html" hreflang="en" lang="en" aria-current="true">EN</a>
+        <a href="../privacy.html" hreflang="nl" lang="nl">NL</a>
+      </div>
+
+      <button class="theme-fab" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+      <svg class="icon-sun" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" aria-hidden="true">
+        <circle cx="128" cy="128" r="52" />
+        <line x1="128" y1="28" x2="128" y2="8" />
+        <line x1="128" y1="248" x2="128" y2="228" />
+        <line x1="28" y1="128" x2="8" y2="128" />
+        <line x1="248" y1="128" x2="228" y2="128" />
+        <line x1="57" y1="57" x2="43" y2="43" />
+        <line x1="213" y1="213" x2="199" y2="199" />
+        <line x1="57" y1="199" x2="43" y2="213" />
+        <line x1="213" y1="43" x2="199" y2="57" />
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round" aria-hidden="true">
+        <path d="M216 152A96 96 0 0 1 104 40a96 96 0 1 0 112 112Z" />
+      </svg>
+      </button>
+    </div>
+
+    <main id="main">
+      <div class="wrap prose">
+        <h1>Privacy policy</h1>
+        <p class="prose__meta">
+          Draft of 14 August 2026. This document is a plain statement of how the product is
+          built. It has not yet been reviewed by counsel and is not a contract.
+        </p>
+
+        <h2>The short version</h2>
+        <p>
+          Cadence processes camera images on your phone and nowhere else. No frame is uploaded,
+          written to storage, or made visible to your employer or to us. What leaves the device
+          is the outcome, meaning a count of repetitions, seconds held, and the points those
+          earned.
+        </p>
+
+        <h2>Camera data</h2>
+        <p>
+          When you start a camera session, the app runs a pose model locally. The model turns
+          each frame into a set of body landmark coordinates, uses them to decide whether a
+          repetition or a hold occurred, and then discards the frame. The app requests camera
+          permission for this and for nothing else.
+        </p>
+        <ul>
+          <li>No video or still image is recorded.</li>
+          <li>No frame or landmark set is transmitted off the device.</li>
+          <li>No frame is retained after it has been processed.</li>
+          <li>There is no remote server involved in counting.</li>
+        </ul>
+
+        <h2>Health data</h2>
+        <p>
+          If you allow it, Cadence reads steps, stand hours, mindful minutes, and workouts from
+          Apple Health or Android Health Connect, so that activity you did outside the app counts
+          toward your ring. Cadence reads these values, converts them into points, and does not
+          share the underlying health records with your employer. You can withdraw this
+          permission at any time in your device settings, and the ring continues to work without
+          it.
+        </p>
+
+        <h2>What your employer can see</h2>
+        <p>
+          Your employer receives aggregate and anonymised figures only. Typically this means how
+          many people closed a ring, participation rates over time, and team challenge totals.
+        </p>
+        <ul>
+          <li>Your employer cannot see your individual health data.</li>
+          <li>Your employer cannot see which exercises you did, or how well you did them.</li>
+          <li>Your employer cannot see camera derived form or posture information.</li>
+          <li>Your employer cannot see your weight, your goals, or your reminders.</li>
+        </ul>
+
+        <h2>Where data is stored</h2>
+        <p>
+          Cadence runs one database project per customer company, in a region that company
+          chooses. Your records are not stored in a shared table alongside another employer's
+          records. On the device, your ring state and settings are held in the operating system
+          secure store.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          Under the GDPR you may request access to your data, correction of it, export of it, or
+          erasure of it. Because your employer is the data controller for the deployment you use,
+          the fastest route is normally through them, and we support them in answering. You may
+          also contact us directly using the address below.
+        </p>
+
+        <h2>Retention</h2>
+        <p>
+          Ring history is kept for the life of the customer contract. When a contract ends we
+          provide an export and then delete the entire database project. Camera frames are never
+          retained at any point, so there is nothing to delete.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Write to privacy@cadence.example with any question about this policy or about a
+          specific deployment.
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer__base">
+          <span>Copyright 2026 Cadence. All rights reserved.</span>
+          <span>
+            <a href="index.html">Home</a> · <a href="terms.html">Terms</a>
+           ·
+            <a href="../privacy.html" hreflang="nl" lang="nl">Nederlands</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
