@@ -77,10 +77,32 @@ An inline script in each `<head>` applies the stored choice before first paint, 
 flash. The brand mark and the sun and moon icons are swapped in CSS rather than with
 `<picture media>`, because a media attribute cannot see the toggle.
 
+## Positioning
+
+The page leads on **screen work and the neck, shoulder and arm complaints that follow it**, not
+on wellness in general. Verification is the proof, not the promise. This follows the Netherlands
+market research (August 2026), which is explicit about what may and may not be claimed:
+
+- **Say** less absence from screen work and sitting, and more energy in the working day.
+- **Do not say** less sickness, less burnout, or lower staff turnover. The chain is too long,
+  HR sees through it, and the medical framing carries GDPR risk.
+- **Do not promise** a per company App Store listing as standard. Near identical white label
+  apps hit Apple's rules on duplicate apps. Branding is standard, a separate listing is a paid
+  upgrade. The FAQ is worded to match.
+- **First market** is desk heavy organisations of 25 to 200 staff in IT, finance, government and
+  professional services. The four presets in the Configure section reflect that. Care and heavy
+  physical work are deliberately absent.
+
 ## Claims to keep true
 
-The numbers on the page are counted from the app repo's
-`src/features/library/lib/moves.ts`: **34 workout moves, 12 stretch holds, 46 total**, across
-three detection tiers. If that catalog changes, change the stat strip and the "Everyone can
-close it" card with it. Nothing on the page is a customer name, a testimonial or a metric we
-cannot show.
+Every figure on the page is listed with its source in the Sources section, and the page links
+to it from the stat strip. Two kinds of number appear:
+
+- **Third party**, from TNO and CBS. Update the Sources section if a newer factsheet lands.
+- **Our own**: 34 workout moves, 12 stretch holds, 46 total, three detection tiers, counted
+  from the app repo's `src/features/library/lib/moves.ts`. If that catalogue changes, change
+  the Sources entry and the "Everyone can close it" card with it.
+
+Nothing on the page is a customer name, a testimonial, or a metric we cannot show. The Sources
+section also states plainly that the evidence for reduced absence is weaker than the evidence
+for reduced pain, which is deliberate: overclaiming loses the serious buyer.
